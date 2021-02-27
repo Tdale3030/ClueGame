@@ -25,9 +25,7 @@ public class TestBoardCell {
     }
 
 
-    Set<TestBoardCell> getAdjList(){
-
-		int TestBoardcell;
+    public Set<TestBoardCell> getAdjList(){
 		HashSet<TestBoardCell> test=new HashSet();
 		return  test;
 
@@ -37,7 +35,7 @@ public class TestBoardCell {
     	return true;
     }
     
-    void setRoom( boolean isRoom) {
+    public void setRoom( boolean isRoom) {
     	isRoom=isRoom();
     	
     }
@@ -46,9 +44,8 @@ public class TestBoardCell {
     	return true;
     }
     
-    void setOccupied(boolean isOccupied) {
+    public void setOccupied(boolean isOccupied) {
     	isOccupied=isOccupied();
-
 
     }
 

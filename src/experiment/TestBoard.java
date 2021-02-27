@@ -9,20 +9,19 @@ public class TestBoard {
 		// TODO Auto-generated constructor stub
 	}
 	
-	void calcTargets( TestBoardCell startCell, int pathlength) {
-		
-		
+	public void calcTargets( TestBoardCell startCell, int pathlength) {
+	
 	}
 	
-	Set<TestBoardCell> getTargets(){
+	public Set<TestBoardCell> getTargets(){
 		int TestBoardcell;
 		HashSet<TestBoardCell> targets=new HashSet();
 		return  targets;
 	
 	}
 	
-	TestBoardCell getCell( int row, int col ) {
-		TestBoardCell experiment= new TestBoardCell(row, col);
+	public TestBoardCell getCell( int row, int col ) {
+		TestBoardCell experiment = new TestBoardCell(row, col);
 		return experiment;
 		
 	}
