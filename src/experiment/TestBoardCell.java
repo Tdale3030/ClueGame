@@ -32,7 +32,7 @@ public class TestBoardCell {
 		return  test;
 
     }
-    boolean isRoom() {ß
+    boolean isRoom() {
     
     	return true;
     }
