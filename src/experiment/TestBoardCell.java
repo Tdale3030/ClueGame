@@ -3,7 +3,9 @@ import java.util.*;
 
 public class TestBoardCell {
     private int col, row;
-
+    private boolean isRoom;
+    private boolean getOccupied;
+    
     public TestBoardCell(int col, int row) {
         super();
         this.col = col;
@@ -25,7 +27,33 @@ public class TestBoardCell {
 
     Set<TestBoardCell> getAdjList(){
 
-        return 
+		int TestBoardcell;
+		HashSet<TestBoardCell> test=new HashSet();
+		return  test;
 
-    };
+    }
+    boolean isRoom() {ß
+    
+    	return true;
+    }
+    
+    void setRoom( boolean isRoom) {
+    	isRoom=isRoom();
+    	
+    }
+    boolean isOccupied() {
+        
+    	return true;
+    }
+    
+    void setOccupied(boolean isOccupied) {
+    	isOccupied=isOccupied();
+
+
+    }
+
+    
+    
+    
+    
 }
