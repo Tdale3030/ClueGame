@@ -3,8 +3,8 @@ import java.util.*;
 
 public class TestBoardCell {
     private int col, row;
-    private boolean isRoom;
-    private boolean getOccupied;
+    private boolean isRoom = false;
+    private boolean isOccupied = false;
     HashSet<TestBoardCell> adjList;
     
     public TestBoardCell(int col, int row) {
@@ -30,27 +30,23 @@ public class TestBoardCell {
     public Set<TestBoardCell> getAdjList(){
 		return adjList;
     }
-    boolean isRoom() {
+    public boolean isRoom() {
     
-    	return true;
+    	return isRoom;
     }
     
     public void setRoom( boolean isRoom) {
-    	isRoom=isRoom();
+    	this.isRoom=isRoom;
     	
     }
-    boolean isOccupied() {
+    public boolean getOccupied() {
         
-    	return true;
+    	return isOccupied;
     }
     
     public void setOccupied(boolean isOccupied) {
-    	isOccupied=isOccupied();
+    	this.isOccupied=isOccupied;
 
     }
-
-    
-    
-    
     
 }
