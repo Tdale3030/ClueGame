@@ -5,15 +5,17 @@ public class TestBoardCell {
     private int col, row;
     private boolean isRoom;
     private boolean getOccupied;
+    HashSet<TestBoardCell> adjList;
     
     public TestBoardCell(int col, int row) {
         super();
         this.col = col;
         this.row = row;
+        this.adjList = new HashSet<TestBoardCell>();
     }
 
     void addAdjacency( TestBoardCell cell ) {
-
+    	adjList.add(cell);
     }
 
     public void setCol(int col) {
@@ -26,9 +28,7 @@ public class TestBoardCell {
 
 
     public Set<TestBoardCell> getAdjList(){
-		HashSet<TestBoardCell> test=new HashSet();
-		return  test;
-
+		return adjList;
     }
     boolean isRoom() {
     
