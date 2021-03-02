@@ -147,17 +147,6 @@ class BoardTestsExp {
 		Assert.assertTrue(targets.contains(board.getCell(1, 1)));
 		Assert.assertTrue(targets.contains(board.getCell(2, 2)));
 		Assert.assertTrue(targets.contains(board.getCell(3, 3)));
-		
-		board.getCell(0, 1).setOccupied(true);
-        board.getCell(1, 1).setRoom(true);
-        cell = board.getCell(0, 0);
-        board.calcTargets(cell, 3);
-        targets = board.getTargets();
-        // creating tests to make sure they're equal (correct number of valid locations to move to)
-        Assert.assertEquals(2, targets.size());
-        // making sure the target set contains the correct cells
-        Assert.assertTrue(targets.contains(board.getCell(3, 0)));
-        Assert.assertTrue(targets.contains(board.getCell(2, 1)));
  
 		board.getCell(2,2).setOccupied(true); 
 		board.getCell(2,2).setRoom(true);
