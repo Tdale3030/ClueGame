@@ -47,7 +47,7 @@ public class Board {
        this.layoutConfiFile = layoutConfiFile;
        this.setupConfigFile = setupConfigFile;
     }
-	public void loadLayoutConfig() {
+	public void loadLayoutConfig() throws BadConfigFormatException {
 		loadLayoutConfigTryCatch();
 		
 	
@@ -91,7 +91,7 @@ public class Board {
 
 		}
 	}
-	private void loadLayoutConfigTryCatch() {
+	private void loadLayoutConfigTryCatch() throws BadConfigFormatException {
 		try {
 			ArrayList<String> list = new ArrayList<String>();
 			 File file = new File(layoutConfiFile);
@@ -106,17 +106,26 @@ public class Board {
 	        
 	         input.close();
 	         
+	         
 	        numRows=list.size();
 	        String[] list1 = list.get(0).split(",");
 	        numColumns = list1.length;
 	        
-	        
+	        for (String i: list) {
+	        	 String[] temp = i.split(",");
+	        	 if (temp.length != numColumns) {
+	        		 throw new BadConfigFormatException("Wrong number of columns.");
+	        	 }
+	         }
 	        //Creates a grid and then runs a for loop through the entire Array creating locations for the each space on the board
 	        grid = new BoardCell[numRows][numColumns];
 	        for(int i = 0; i<list.size(); i++) {
 	        	String[] list2 = list.get(i).split(",");
 	        	for(int j = 0; j<list2.length;j++) {
 	        		BoardCell BoardCell2 = new BoardCell(i, j);
+	        		//if(!roomMap.containsKey(list2[j].charAt(0))) {
+	        		//	throw new BadConfigFormatException("Wrong Character");
+	        		//}
 	        		BoardCell2.setInitial(list2[j].charAt(0));
 	        		if(list2[j].length() == 2) {
 	        			
@@ -182,17 +191,6 @@ public class Board {
 		
 		return numColumns;
 	}
-	public Set<BoardCell> getAdjList(int i, int j) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	public void calcTargets(BoardCell cell, int i) {
-		// TODO Auto-generated method stub
-		
-	}
-	public Set<BoardCell> getTargets() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 }
