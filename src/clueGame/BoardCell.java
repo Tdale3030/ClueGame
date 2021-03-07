@@ -78,6 +78,6 @@ public class BoardCell {
     public void addAdj(BoardCell cell) {
     	adjList.add(cell);
     }
-	
+	//fin
 
 }
