@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 //AUTHORS:Brody Clark and Tyner Dale
 public class Board {
 	private static Board theInstance = new Board();
@@ -32,27 +33,46 @@ public class Board {
 	 * initialize the board (since we are using singleton pattern)
 	 */
 	public void initialize() throws BadConfigFormatException, FileNotFoundException{
+		initializeTryCatch();
+		
+	}
+
+	public void loadSetupConfig() throws BadConfigFormatException {
+		loadSetUpConfigTryCatch();
+
+
+	}
+	
+	public void setConfigFiles(String layoutConfiFile, String setupConfigFile) {
+       this.layoutConfiFile = layoutConfiFile;
+       this.setupConfigFile = setupConfigFile;
+    }
+	public void loadLayoutConfig() {
+		loadLayoutConfigTryCatch();
+		
+	
+		
+	}
+	private void initializeTryCatch() {
 		try {
 			loadSetupConfig();
 			loadLayoutConfig();
 		}catch(BadConfigFormatException exp){
 			
 		}
-		
 	}
-
-	public void loadSetupConfig() throws BadConfigFormatException {
+	private void loadSetUpConfigTryCatch() throws BadConfigFormatException {
 		try {
 			//reads in Layout.txt file//
 			FileReader read = new FileReader(setupConfigFile);
 			Scanner input = new Scanner(read);
 			while(input.hasNextLine()) {
-				String line = input.nextLine();
-				if(line.charAt(0) == '/') {
+				String components = input.nextLine();
+				if(components.charAt(0) == '/') {
 					continue;
 				}
 				
-				String[] list = line.split(",");
+				String[] list = components.split(",");
 				for (int i = 0; i < list.length; i++) {
 					list[i] = list[i].trim();
 				}
@@ -70,15 +90,8 @@ public class Board {
 			System.out.println("File cannot open ");
 
 		}
-
-
 	}
-	public void setConfigFiles(String layoutConfiFile, String setupConfigFile) {
-       this.layoutConfiFile = layoutConfiFile;
-       this.setupConfigFile = setupConfigFile;
-    }
-	public void loadLayoutConfig() {
-		
+	private void loadLayoutConfigTryCatch() {
 		try {
 			ArrayList<String> list = new ArrayList<String>();
 			 File file = new File(layoutConfiFile);
@@ -97,6 +110,8 @@ public class Board {
 	        String[] list1 = list.get(0).split(",");
 	        numColumns = list1.length;
 	        
+	        
+	        //Creates a grid and then runs a for loop through the entire Array creating locations for the each space on the board
 	        grid = new BoardCell[numRows][numColumns];
 	        for(int i = 0; i<list.size(); i++) {
 	        	String[] list2 = list.get(i).split(",");
@@ -148,9 +163,6 @@ public class Board {
 		}catch(FileNotFoundException exp) {
 			System.out.println("File cannot open ");//File was unable to open
 		}
-		
-	
-		
 	}
 	
 	public Room getRoom(char symbol) {
@@ -163,12 +175,24 @@ public class Board {
         return grid[row][col];//returns the value of the cell
     }
 	public int getNumRows() {
-		// TODO Auto-generated method stub
+		
 		return numRows;
 	}
 	public int getNumColumns() {
-		// TODO Auto-generated method stub
+		
 		return numColumns;
+	}
+	public Set<BoardCell> getAdjList(int i, int j) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public void calcTargets(BoardCell cell, int i) {
+		// TODO Auto-generated method stub
+		
+	}
+	public Set<BoardCell> getTargets() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
