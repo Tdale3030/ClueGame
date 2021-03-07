@@ -7,9 +7,12 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
+
+import experiment.TestBoardCell;
 //AUTHORS:Brody Clark and Tyner Dale
 public class Board {
 	private static Board theInstance = new Board();
@@ -17,6 +20,7 @@ public class Board {
 	private String layoutConfiFile, setupConfigFile;
 	private Map<Character, Room> roomMap;
 	private BoardCell[][] grid;
+	Set<BoardCell> adjList= new HashSet<BoardCell>();
 	/*
 	 * variable and methods used for singleton pattern
 	 */
@@ -34,11 +38,11 @@ public class Board {
 	 */
 	public void initialize() throws BadConfigFormatException, FileNotFoundException{
 		initializeTryCatch();
-		
+																		//refactoring
 	}
 
 	public void loadSetupConfig() throws BadConfigFormatException {
-		loadSetUpConfigTryCatch();
+		loadSetUpConfigTryCatch();										//refactoring
 
 
 	}
@@ -49,7 +53,7 @@ public class Board {
     }
 	public void loadLayoutConfig() throws BadConfigFormatException {
 		loadLayoutConfigTryCatch();
-		
+																		//refactoring
 	
 		
 	}
@@ -64,20 +68,20 @@ public class Board {
 	private void loadSetUpConfigTryCatch() throws BadConfigFormatException {
 		try {
 			//reads in Layout.txt file//
-			FileReader read = new FileReader(setupConfigFile);
+			FileReader read = new FileReader(setupConfigFile);				//opening file
 			Scanner input = new Scanner(read);
 			while(input.hasNextLine()) {
 				String components = input.nextLine();
-				if(components.charAt(0) == '/') {
+				if(components.charAt(0) == '/') {							//if statements for comments in file
 					continue;
 				}
 				
 				String[] list = components.split(",");
-				for (int i = 0; i < list.length; i++) {
+				for (int i = 0; i < list.length; i++) {					//trimming the file
 					list[i] = list[i].trim();
 				}
 				
-				if(list[0].equals("Room") || list[0].equals("Space")) {
+				if(list[0].equals("Room") || list[0].equals("Space")) {		//making the map correctly
 					roomMap.put(list[2].charAt(0), new Room(list[1]));
 				}
 				else {
@@ -85,35 +89,35 @@ public class Board {
 				}
 				
 			}
-			input.close();
+			input.close();													//close file
 		}catch(FileNotFoundException exp){
-			System.out.println("File cannot open ");
+			System.out.println("File cannot open ");						//file cannot open thrown exception
 
 		}
 	}
 	private void loadLayoutConfigTryCatch() throws BadConfigFormatException {
 		try {
-			ArrayList<String> list = new ArrayList<String>();
-			 File file = new File(layoutConfiFile);
+			ArrayList<String> list = new ArrayList<String>();		//creates new array
+			 File file = new File(layoutConfiFile);					//reads file
 	         Scanner input = new Scanner(file);
 	         
-	         while (input.hasNext()) {
+	         while (input.hasNext()) {								//while loop
 	        	
 	        	 list.add(input.nextLine());
 	        
 	        	 
 	         }
 	        
-	         input.close();
+	         input.close();											//closes file
 	         
 	         
-	        numRows=list.size();
+	        numRows=list.size();									//rows size
 	        String[] list1 = list.get(0).split(",");
-	        numColumns = list1.length;
+	        numColumns = list1.length;								//finding column size
 	        
 	        for (String i: list) {
 	        	 String[] temp = i.split(",");
-	        	 if (temp.length != numColumns) {
+	        	 if (temp.length != numColumns) {					//for loop for throw exception
 	        		 throw new BadConfigFormatException("Wrong number of columns.");
 	        	 }
 	         }
@@ -190,6 +194,18 @@ public class Board {
 	public int getNumColumns() {
 		
 		return numColumns;
+	}
+	public Set<BoardCell> getAdjList(int i, int j) {
+
+		return new HashSet<BoardCell>();
+	}
+	public void calcTargets(BoardCell cell, int i) {
+		
+	
+		
+	}
+	public Set<BoardCell> getTargets() {
+		return new HashSet<BoardCell>();
 	}
 	
 

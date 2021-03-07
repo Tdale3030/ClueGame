@@ -75,7 +75,9 @@ public class BoardCell {
 	public char getInitial() {
 		return initial;
 	}
-    
+    public void addAdj(BoardCell cell) {
+    	adjList.add(cell);
+    }
 	
 
 }
