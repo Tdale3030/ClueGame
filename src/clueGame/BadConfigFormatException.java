@@ -3,7 +3,11 @@ package clueGame;
 public class BadConfigFormatException extends Exception {
 
 	public BadConfigFormatException() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
-
+	
+	public BadConfigFormatException(String string) {
+		super(string);
+	}
+	
 }

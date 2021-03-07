@@ -1,5 +1,5 @@
 package tests;
-
+     
 /*
  * This program tests that config files are loaded properly.
  */
@@ -8,10 +8,13 @@ package tests;
 // Assert.assertEquals
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
+
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import clueGame.BadConfigFormatException;
 import clueGame.Board;
 import clueGame.BoardCell;
 import clueGame.DoorDirection;
@@ -28,11 +31,11 @@ public class FileInitTests306 {
 	private static Board board;
 
 	@BeforeAll
-	public static void setUp() {
+	public static void setUp() throws BadConfigFormatException, FileNotFoundException {
 		// Board is singleton, get the only instance
 		board = Board.getInstance();
 		// set the file names to use my config files
-		board.setConfigFiles("ClueLayout306.csv", "ClueSetup306.txt");
+		board.setConfigFiles("data/ClueLayout306.csv", "data/ClueSetup306.txt");
 		// Initialize will load BOTH config files
 		board.initialize();
 	}
@@ -75,7 +78,7 @@ public class FileInitTests306 {
 		// Test that walkways are not doors
 		cell = board.getCell(12, 14);
 		assertFalse(cell.isDoorway());
-	}
+	}      
 	
 
 	// Test that we have the correct number of doors
@@ -88,6 +91,7 @@ public class FileInitTests306 {
 				if (cell.isDoorway())
 					numDoors++;
 			}
+		
 		Assert.assertEquals(17, numDoors);
 	}
 
