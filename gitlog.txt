@@ -1,318 +1,33 @@
-commit e7dd18fc03a6f103f736a5d6818327c2748b7c60
+commit 4248e413366a7dd0792dbd3efff471260f950125
 Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 20:04:41 2021 -0700
+Date:   Sat Mar 6 20:11:03 2021 -0700
 
-    Finished Code
+    Bugs Fixed
 
-commit a8a6f8f44eabbfe436468d051cce8ca43fcd7050
+commit 006865c9239bccd28c31216d89868fc48287ebb5
 Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 19:48:56 2021 -0700
+Date:   Sat Mar 6 20:04:12 2021 -0700
 
-    Entering Tests
+    Done with C14A-2
 
-commit a150a738ce676f579f72fe7b433bd9f983f78d0d
+commit 09f909bb64f43d8de5f0343a316d9c33779a1a6a
 Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 19:36:27 2021 -0700
+Date:   Sat Mar 6 18:59:26 2021 -0700
 
-    Tests input
+    Final Bugs
 
-commit a0e7beec64e0a7359a282a93bb1a8ccda4f56976
+commit 84c20156267c6398c74190193ec888ed764fe149
 Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 19:21:58 2021 -0700
+Date:   Sat Mar 6 18:31:07 2021 -0700
 
-    Class 2
+    Refactor
 
-commit 87d56e1a453615ca562ce24f86fb346381521ae1
+commit 590fd14e89218861c04dda6c678e53d92d7df335
 Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 18:51:07 2021 -0700
+Date:   Sat Mar 6 18:21:05 2021 -0700
 
-    Most of TestBoard
+    C14A-1 done
 
-commit 8eaa95bb7343eef80368dbfb4741e97f5fb2ff53
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 18:42:59 2021 -0700
-
-    TestBoardCell
-
-commit 72751d4c068cc086b724a613b37e1e258fe88fd3
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 18:20:12 2021 -0700
-
-    making edits
-
-commit 50737ad2b9ed67456c69973ff855b61b015d255b
-Author: brodyclark <57745054+brodyclark@users.noreply.github.com>
-Date:   Fri Feb 26 18:00:59 2021 -0700
-
-    Delete .classpath
-
-commit 92d6f41cdb538393f67fdbe8f09d644b2b972b3e
-Author: brodyclark <57745054+brodyclark@users.noreply.github.com>
-Date:   Fri Feb 26 18:00:53 2021 -0700
-
-    Delete .project
-
-commit 4ef12433e9b40342dd5c4247bb6731882d6f8552
-Author: brodyclark <57745054+brodyclark@users.noreply.github.com>
-Date:   Fri Feb 26 18:00:44 2021 -0700
-
-    Update .gitignore
-
-commit d798dd977ada5bf98b9e07462a5c6eb37b1a9e5a
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 18:00:05 2021 -0700
-
-    Adding constructor
-
-commit 47435a99657f0188d7778d0ad139620aa8f3bd8d
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 17:58:40 2021 -0700
-
-    Adding
-
-commit 8473573cc65dfe8394d91880f0d03a03b848dc1c
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 17:57:48 2021 -0700
-
-    Creating Test Board Cell
-
-commit 4043554ca4d5827836eccbd4d581684ca80ff976
-Author: Tyner Dale <57678688+Tdale3030@users.noreply.github.com>
-Date:   Fri Feb 26 17:47:50 2021 -0700
-
-    Delete TestBoardCell.java
-
-commit 797d4b9ec009ec3228bd88535357c2f54bfc71cc
-Author: Tyner Dale <57678688+Tdale3030@users.noreply.github.com>
-Date:   Fri Feb 26 17:43:11 2021 -0700
-
-    Add files via upload
-
-commit 7e45c72b0bfa3bcacd807e030a0ef90dfac2a2f1
-Author: Tyner Dale <57678688+Tdale3030@users.noreply.github.com>
-Date:   Fri Feb 26 17:22:26 2021 -0700
-
-    Initial commit
-commit 876b9be6ef763227ee526d188b464764aa68f6ec
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Mon Mar 1 23:21:27 2021 -0700
-
-    Finish
-
-commit 2ad4157bf5c5a24e3831212080408574e59c5a1c
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Mon Mar 1 20:35:32 2021 -0700
-
-    Adjacency Tests almost Complete
-
-commit e7dd18fc03a6f103f736a5d6818327c2748b7c60
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 20:04:41 2021 -0700
-
-    Finished Code
-
-commit a8a6f8f44eabbfe436468d051cce8ca43fcd7050
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 19:48:56 2021 -0700
-
-    Entering Tests
-
-commit a150a738ce676f579f72fe7b433bd9f983f78d0d
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 19:36:27 2021 -0700
-
-    Tests input
-
-commit a0e7beec64e0a7359a282a93bb1a8ccda4f56976
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 19:21:58 2021 -0700
-
-    Class 2
-
-commit 87d56e1a453615ca562ce24f86fb346381521ae1
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 18:51:07 2021 -0700
-
-    Most of TestBoard
-
-commit 8eaa95bb7343eef80368dbfb4741e97f5fb2ff53
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 18:42:59 2021 -0700
-
-    TestBoardCell
-
-commit 72751d4c068cc086b724a613b37e1e258fe88fd3
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 18:20:12 2021 -0700
-
-    making edits
-
-commit 50737ad2b9ed67456c69973ff855b61b015d255b
-Author: brodyclark <57745054+brodyclark@users.noreply.github.com>
-Date:   Fri Feb 26 18:00:59 2021 -0700
-
-    Delete .classpath
-
-commit 92d6f41cdb538393f67fdbe8f09d644b2b972b3e
-Author: brodyclark <57745054+brodyclark@users.noreply.github.com>
-Date:   Fri Feb 26 18:00:53 2021 -0700
-
-    Delete .project
-
-commit 4ef12433e9b40342dd5c4247bb6731882d6f8552
-Author: brodyclark <57745054+brodyclark@users.noreply.github.com>
-Date:   Fri Feb 26 18:00:44 2021 -0700
-
-    Update .gitignore
-
-commit d798dd977ada5bf98b9e07462a5c6eb37b1a9e5a
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 18:00:05 2021 -0700
-
-    Adding constructor
-
-commit 47435a99657f0188d7778d0ad139620aa8f3bd8d
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 17:58:40 2021 -0700
-
-    Adding
-
-commit 8473573cc65dfe8394d91880f0d03a03b848dc1c
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 17:57:48 2021 -0700
-
-    Creating Test Board Cell
-
-commit 4043554ca4d5827836eccbd4d581684ca80ff976
-Author: Tyner Dale <57678688+Tdale3030@users.noreply.github.com>
-Date:   Fri Feb 26 17:47:50 2021 -0700
-
-    Delete TestBoardCell.java
-
-commit 797d4b9ec009ec3228bd88535357c2f54bfc71cc
-Author: Tyner Dale <57678688+Tdale3030@users.noreply.github.com>
-Date:   Fri Feb 26 17:43:11 2021 -0700
-
-    Add files via upload
-
-commit 7e45c72b0bfa3bcacd807e030a0ef90dfac2a2f1
-Author: Tyner Dale <57678688+Tdale3030@users.noreply.github.com>
-Date:   Fri Feb 26 17:22:26 2021 -0700
-
-    Initial commit
-commit a6b372f4deeab09d9ea13b04f96e29e7f67e8cb4
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Mon Mar 1 23:29:07 2021 -0700
-
-    Halfway
-
-commit 876b9be6ef763227ee526d188b464764aa68f6ec
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Mon Mar 1 23:21:27 2021 -0700
-
-    Finish
-
-commit 2ad4157bf5c5a24e3831212080408574e59c5a1c
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Mon Mar 1 20:35:32 2021 -0700
-
-    Adjacency Tests almost Complete
-
-commit e7dd18fc03a6f103f736a5d6818327c2748b7c60
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 20:04:41 2021 -0700
-
-    Finished Code
-
-commit a8a6f8f44eabbfe436468d051cce8ca43fcd7050
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 19:48:56 2021 -0700
-
-    Entering Tests
-
-commit a150a738ce676f579f72fe7b433bd9f983f78d0d
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 19:36:27 2021 -0700
-
-    Tests input
-
-commit a0e7beec64e0a7359a282a93bb1a8ccda4f56976
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 19:21:58 2021 -0700
-
-    Class 2
-
-commit 87d56e1a453615ca562ce24f86fb346381521ae1
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 18:51:07 2021 -0700
-
-    Most of TestBoard
-
-commit 8eaa95bb7343eef80368dbfb4741e97f5fb2ff53
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 18:42:59 2021 -0700
-
-    TestBoardCell
-
-commit 72751d4c068cc086b724a613b37e1e258fe88fd3
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 18:20:12 2021 -0700
-
-    making edits
-
-commit 50737ad2b9ed67456c69973ff855b61b015d255b
-Author: brodyclark <57745054+brodyclark@users.noreply.github.com>
-Date:   Fri Feb 26 18:00:59 2021 -0700
-
-    Delete .classpath
-
-commit 92d6f41cdb538393f67fdbe8f09d644b2b972b3e
-Author: brodyclark <57745054+brodyclark@users.noreply.github.com>
-Date:   Fri Feb 26 18:00:53 2021 -0700
-
-    Delete .project
-
-commit 4ef12433e9b40342dd5c4247bb6731882d6f8552
-Author: brodyclark <57745054+brodyclark@users.noreply.github.com>
-Date:   Fri Feb 26 18:00:44 2021 -0700
-
-    Update .gitignore
-
-commit d798dd977ada5bf98b9e07462a5c6eb37b1a9e5a
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 18:00:05 2021 -0700
-
-    Adding constructor
-
-commit 47435a99657f0188d7778d0ad139620aa8f3bd8d
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 17:58:40 2021 -0700
-
-    Adding
-
-commit 8473573cc65dfe8394d91880f0d03a03b848dc1c
-Author: brodyclark <brodyclark@mymail.mines.edu>
-Date:   Fri Feb 26 17:57:48 2021 -0700
-
-    Creating Test Board Cell
-
-commit 4043554ca4d5827836eccbd4d581684ca80ff976
-Author: Tyner Dale <57678688+Tdale3030@users.noreply.github.com>
-Date:   Fri Feb 26 17:47:50 2021 -0700
-
-    Delete TestBoardCell.java
-
-commit 797d4b9ec009ec3228bd88535357c2f54bfc71cc
-Author: Tyner Dale <57678688+Tdale3030@users.noreply.github.com>
-Date:   Fri Feb 26 17:43:11 2021 -0700
-
-    Add files via upload
-
-commit 7e45c72b0bfa3bcacd807e030a0ef90dfac2a2f1
-Author: Tyner Dale <57678688+Tdale3030@users.noreply.github.com>
-Date:   Fri Feb 26 17:22:26 2021 -0700
-
-    Initial commit
 commit 3b79a1e77ce19c965a18d680d6399f5fda5655c5
 Author: brodyclark <brodyclark@mymail.mines.edu>
 Date:   Mon Mar 1 23:45:16 2021 -0700

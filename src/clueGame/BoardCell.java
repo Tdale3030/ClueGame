@@ -7,21 +7,23 @@ import experiment.TestBoardCell;
 //AUTHORS:Brody Clark and Tyner Dale
 
 public class BoardCell {
-
+	private boolean isRoom = false;
 	private int row;
     private int col;
     private char initial;
 	private DoorDirection doorDirection = DoorDirection.NONE;
     private boolean roomLabel;
     private boolean roomCenter;
-    private char secretPassage;
-    private Set<BoardCell> adjList;
+    private boolean isOccupied = false;
+    
     private boolean doorway;
-    private char c;
+    private char c = ' ';
+    HashSet<BoardCell> adjList;
     
     public BoardCell(int row, int col) {
       this.row = row;
       this.col = col;
+      this.adjList = new HashSet<BoardCell>();
     }
     
     public DoorDirection getDoorDirection() {
@@ -78,6 +80,31 @@ public class BoardCell {
     public void addAdj(BoardCell cell) {
     	adjList.add(cell);
     }
+    
+    void addAdjacency( BoardCell cell ) {
+    	adjList.add(cell);
+    }
+    public HashSet<BoardCell> getAdjList(){
+		return adjList;
+    }
 	//fin
+
+    public boolean isRoom() {
+        
+    	return isRoom;
+    }
+
+	public boolean getOccupied() {
+		// TODO Auto-generated method stub
+		return isOccupied;
+	}
+	public void setRoom( boolean isRoom) {
+    	this.isRoom=isRoom;
+    	
+    }
+	public void setOccupied(boolean isOccupied) {
+    	this.isOccupied=isOccupied;
+
+    }
 
 }
