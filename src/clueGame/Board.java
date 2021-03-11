@@ -325,32 +325,35 @@ public class Board {
 				
 				
 				
-				if ((i-1) >= 0) {
-					if(grid[i][j].getInitial() == grid[i-1][j].getInitial()) {			//makes sure the user is inside the grid
-						grid[i][j].addAdjacency(grid[i-1][j]);
-					}
-					
-				}
-				if ((i+1) <= numRows-1) {			//makes sure the user is inside the grid
-					if(grid[i][j].getInitial() == grid[i+1][j].getInitial()) {
-						grid[i][j].addAdjacency(grid[i+1][j]);
-					}
-
-				}
-				if ((j-1) >= 0) {					//makes sure the user is inside the grid
-					if(grid[i][j].getInitial() == grid[i][j-1].getInitial()) {
-						grid[i][j].addAdjacency(grid[i][j-1]);
-					}
-
-				}
-				if ((j+1) <= numColumns-1) {				//makes sure the user is inside the grid
-					if(grid[i][j].getInitial() == grid[i][j+1].getInitial()) {
-						grid[i][j].addAdjacency(grid[i][j+1]);
-					}
-
-				}
+				getInitialAdding(i, j);
 				
 			}
+		}
+	}
+	private void getInitialAdding(int i, int j) {
+		if ((i-1) >= 0) {
+			if(grid[i][j].getInitial() == grid[i-1][j].getInitial()) {			//makes sure the user is inside the grid
+				grid[i][j].addAdjacency(grid[i-1][j]);
+			}
+			
+		}
+		if ((i+1) <= numRows-1) {			//makes sure the user is inside the grid
+			if(grid[i][j].getInitial() == grid[i+1][j].getInitial()) {
+				grid[i][j].addAdjacency(grid[i+1][j]);
+			}
+
+		}
+		if ((j-1) >= 0) {					//makes sure the user is inside the grid
+			if(grid[i][j].getInitial() == grid[i][j-1].getInitial()) {
+				grid[i][j].addAdjacency(grid[i][j-1]);
+			}
+
+		}
+		if ((j+1) <= numColumns-1) {				//makes sure the user is inside the grid
+			if(grid[i][j].getInitial() == grid[i][j+1].getInitial()) {
+				grid[i][j].addAdjacency(grid[i][j+1]);
+			}
+
 		}
 	}
 	public void calcTargets( BoardCell startCell, int pathlength) {
