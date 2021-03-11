@@ -260,74 +260,80 @@ public class Board {
 							}
 						}
 					}	
-					for(int a = 0; a<numRows; a++) {
-						for (int b = 0; b<numColumns; b++) {			//see the door direction
-							
-							if(grid[a][b].isDoorway()) {
-								if(grid[a][b].getDoorDirection() == DoorDirection.UP){	//for up
-									if(grid[a-1][b].getInitial() == grid[i][j].getInitial()) {
-										grid[i][j].addAdjacency(grid[a][b]);	//adds to list 
-									}
-									
-								}if(grid[a][b].getDoorDirection() == DoorDirection.DOWN){		//for down
-									if(grid[a+1][b].getInitial() == grid[i][j].getInitial()) {
-										grid[i][j].addAdjacency(grid[a][b]);	//adds to list
-									}
-									
-								}if(grid[a][b].getDoorDirection() == DoorDirection.RIGHT){		//for right
-									if(grid[a][b+1].getInitial() == grid[i][j].getInitial()) {
-										grid[i][j].addAdjacency(grid[a][b]);	//adds to list
-									}
-									
-								}if(grid[a][b].getDoorDirection() == DoorDirection.LEFT){		//for left
-									if(grid[a][b-1].getInitial() == grid[i][j].getInitial()) {
-										grid[i][j].addAdjacency(grid[a][b]);	//adds to list
-									}
-								}
-							}
-						}
-					}
+					doorDirectionRefactored(i, j);		//refactored
 					continue;
 				}
 				
 				
-				if(grid[i][j].isDoorway()) {
-					DoorDirection dir = DoorDirection.NONE;
-							
-					dir = grid[i][j].getDoorDirection();
-					
-					if(dir==DoorDirection.UP) {		//finds door direction if up
-						BoardCell one = roomMap.get(grid[i-1][j].getInitial()).getCenterCell();
-						grid[i][j].addAdj(one);
-						
-					
-					}else if(dir==DoorDirection.DOWN) {		//finds door direction if down
-						BoardCell one = roomMap.get(grid[i+1][j].getInitial()).getCenterCell();
-						grid[i][j].addAdj(one);
-						
-					
-					}else if(dir==DoorDirection.LEFT) {		//finds door direction if left
-						BoardCell one = roomMap.get(grid[i][j-1].getInitial()).getCenterCell();
-						grid[i][j].addAdj(one);
-						
-					
-					}else if(dir==DoorDirection.RIGHT) {		//finds door direction if right
-						BoardCell one = roomMap.get(grid[i][j+1].getInitial()).getCenterCell();
-						grid[i][j].addAdj(one);
-						
-					
-					}
-					
-					
-					
-				}
+				isDoorwayRefactored(i, j);		//refactored
 				
 				
 				
 				
-				getInitialAdding(i, j);
+				getInitialAdding(i, j);		//refactored
 				
 			}
+		}
+	}
+	private void doorDirectionRefactored(int i, int j) {
+		for(int a = 0; a<numRows; a++) {
+			for (int b = 0; b<numColumns; b++) {			//see the door direction
+				
+				if(grid[a][b].isDoorway()) {
+					if(grid[a][b].getDoorDirection() == DoorDirection.UP){	//for up
+						if(grid[a-1][b].getInitial() == grid[i][j].getInitial()) {
+							grid[i][j].addAdjacency(grid[a][b]);	//adds to list 
+						}
+						
+					}if(grid[a][b].getDoorDirection() == DoorDirection.DOWN){		//for down
+						if(grid[a+1][b].getInitial() == grid[i][j].getInitial()) {
+							grid[i][j].addAdjacency(grid[a][b]);	//adds to list
+						}
+						
+					}if(grid[a][b].getDoorDirection() == DoorDirection.RIGHT){		//for right
+						if(grid[a][b+1].getInitial() == grid[i][j].getInitial()) {
+							grid[i][j].addAdjacency(grid[a][b]);	//adds to list
+						}
+						
+					}if(grid[a][b].getDoorDirection() == DoorDirection.LEFT){		//for left
+						if(grid[a][b-1].getInitial() == grid[i][j].getInitial()) {
+							grid[i][j].addAdjacency(grid[a][b]);	//adds to list
+						}
+					}
+				}
+			}
+		}
+	}
+	private void isDoorwayRefactored(int i, int j) {
+		if(grid[i][j].isDoorway()) {
+			DoorDirection dir = DoorDirection.NONE;
+					
+			dir = grid[i][j].getDoorDirection();
+			
+			if(dir==DoorDirection.UP) {		//finds door direction if up
+				BoardCell one = roomMap.get(grid[i-1][j].getInitial()).getCenterCell();
+				grid[i][j].addAdj(one);
+				
+			
+			}else if(dir==DoorDirection.DOWN) {		//finds door direction if down
+				BoardCell one = roomMap.get(grid[i+1][j].getInitial()).getCenterCell();
+				grid[i][j].addAdj(one);
+				
+			
+			}else if(dir==DoorDirection.LEFT) {		//finds door direction if left
+				BoardCell one = roomMap.get(grid[i][j-1].getInitial()).getCenterCell();
+				grid[i][j].addAdj(one);
+				
+			
+			}else if(dir==DoorDirection.RIGHT) {		//finds door direction if right
+				BoardCell one = roomMap.get(grid[i][j+1].getInitial()).getCenterCell();
+				grid[i][j].addAdj(one);
+				
+			
+			}
+			
+			
+			
 		}
 	}
 	private void getInitialAdding(int i, int j) {
