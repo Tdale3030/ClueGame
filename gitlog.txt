@@ -1,3 +1,27 @@
+commit 404fefbce92541b9226a757f244b4451c42fd4d6
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Wed Mar 10 23:54:17 2021 -0700
+
+    FUlly done
+
+commit abc679aa7b0261d3620f1cafebbe383424f3bbd3
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Wed Mar 10 23:51:44 2021 -0700
+
+    Finished
+
+commit e587b6736b60d0872a981737c84d362753e46c12
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Wed Mar 10 23:49:05 2021 -0700
+
+    Refactored and done
+
+commit 49877d2be07653ac087a553bd85ae85138b47810
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Wed Mar 10 23:01:03 2021 -0700
+
+    Tyner and I got 306 test correct
+
 commit 4248e413366a7dd0792dbd3efff471260f950125
 Author: brodyclark <brodyclark@mymail.mines.edu>
 Date:   Sat Mar 6 20:11:03 2021 -0700

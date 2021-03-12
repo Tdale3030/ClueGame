@@ -92,7 +92,7 @@ public class FileInitTests {
 					numDoors++;
 			}
 		
-		Assert.assertEquals(15, numDoors);
+		Assert.assertEquals(16, numDoors);
 	}
 
 	// Test a few room cells to ensure the room initial is correct.
