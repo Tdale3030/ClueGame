@@ -1,3 +1,9 @@
+commit 0b9ffc207c0a25e136e42138624695e803d5a5f8
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Wed Mar 17 20:51:18 2021 -0600
+
+    nextLine 6
+
 commit 204c7a3d89e47bea7531ae0ab67905f2f1754d4a
 Author: brodyclark <brodyclark@mymail.mines.edu>
 Date:   Wed Mar 17 20:49:34 2021 -0600
