@@ -213,9 +213,6 @@ public class Board {
 		{
 			System.out.println("File cannot open ");//File was unable to open
 		}
-		
-		
-		
 	}
 
 
