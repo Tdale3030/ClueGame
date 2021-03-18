@@ -1,3 +1,9 @@
+commit 9f3608f250221795a563552a793d86387d8bd256
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Wed Mar 17 20:45:35 2021 -0600
+
+    setDoorwayTrue 4
+
 commit 9788d9118dfd4a889f9da2d9d768dff12aa3b8c3
 Author: brodyclark <brodyclark@mymail.mines.edu>
 Date:   Wed Mar 17 20:42:18 2021 -0600
