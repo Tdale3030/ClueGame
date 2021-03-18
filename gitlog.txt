@@ -1,3 +1,15 @@
+commit c8afb2524d8992904e34e2ad09c1607ced71269f
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Wed Mar 17 20:35:47 2021 -0600
+
+    Organize code 1
+
+commit 587235ab68eebc198e695df592fa5d0b1958ed37
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Thu Mar 11 20:23:57 2021 -0700
+
+    Finxing bugs found
+
 commit 404fefbce92541b9226a757f244b4451c42fd4d6
 Author: brodyclark <brodyclark@mymail.mines.edu>
 Date:   Wed Mar 10 23:54:17 2021 -0700
