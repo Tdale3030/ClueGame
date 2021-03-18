@@ -1,3 +1,9 @@
+commit 256957dcb4ccdff1e344b5e8319afc5de5ad1b42
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Wed Mar 17 20:38:26 2021 -0600
+
+    boardCreation 2
+
 commit c8afb2524d8992904e34e2ad09c1607ced71269f
 Author: brodyclark <brodyclark@mymail.mines.edu>
 Date:   Wed Mar 17 20:35:47 2021 -0600
