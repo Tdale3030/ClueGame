@@ -1,3 +1,9 @@
+commit 9788d9118dfd4a889f9da2d9d768dff12aa3b8c3
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Wed Mar 17 20:42:18 2021 -0600
+
+    FindingDoorDirection 3
+
 commit 256957dcb4ccdff1e344b5e8319afc5de5ad1b42
 Author: brodyclark <brodyclark@mymail.mines.edu>
 Date:   Wed Mar 17 20:38:26 2021 -0600
