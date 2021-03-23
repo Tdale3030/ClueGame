@@ -87,7 +87,7 @@ public class BoardCell {
     public HashSet<BoardCell> getAdjList(){
 		return adjList;
     }
-	//fin
+	
 
     public boolean isRoom() {
         

@@ -24,8 +24,9 @@ public class Board {
 	private Set<BoardCell> pathTargets;
 	private Set<BoardCell> visited;
 	private ArrayList<Player> players;
-	private ArrayList<String> weapons;
 	private ArrayList<Card> deck;
+	private Solution theAnswer;
+	private ArrayList<Card> usedCards;
 	/*
 	 * variable and methods used for singleton pattern
 	 */
@@ -44,6 +45,8 @@ public class Board {
 		this.adjList = new HashSet<BoardCell>();
 		this.pathTargets = new HashSet<BoardCell>();
 		this.visited = new HashSet<BoardCell>();
+		this.deck = new ArrayList<Card>();
+		this.players = new ArrayList<Player>();
 	}
 
 
@@ -70,13 +73,12 @@ public class Board {
 	public void initialize() throws BadConfigFormatException, FileNotFoundException{
 		
 		initializeTryCatch();
-		deal();
+		//deal();
 		allAdj();
 																		//refactoring
 	}
 	
 	private void initializeTryCatch() {
-		
 		
 		try {
 			
@@ -119,31 +121,33 @@ public class Board {
 				{					//trimming the file
 					list[i] = list[i].trim();
 				}
-				
+				if(list[0].equals("Character")) 
+				{
+					if(list[3].equals("Human")) 
+					{
+						players.add(new HumanPlayer(list[1],list[2],Integer.parseInt(list[4]),Integer.parseInt(list[5])));		//adds to human player arrayList
+						deck.add(new Card(list[1]));									//adds human player to deck
+					}
+					else if(list[3].equals("Computer"))
+					{
+						players.add(new ComputerPlayer(list[1],list[2],Integer.parseInt(list[4]),Integer.parseInt(list[5])));	//adds to computer plan arrayList
+						deck.add(new Card(list[1]));									//adds computer player to deck
+					}
+					continue;
+				}
+				else if (list[0].equals("Weapon")) {
+					deck.add(new Card(list[1]));
+					continue;//adds weapons to deck
+				}
 				if(list[0].equals("Room") || list[0].equals("Space")) 
 				{		//making the map correctly
 					roomMap.put(list[2].charAt(0), new Room(list[1]));
-					if(list[0].equals("Room")) {deck.add(new Card(list[1]));}
-				}
-				if(list[0].equals("Character") || list[0].equals("Weapon")) {
-					if(list[3]=="Human") {
-						players.add(new HumanPlayer(list[1],list[2],Integer.parseInt(list[4]),Integer.parseInt(list[5])));
+					if ( list[0].equals("Room") ) {
 						deck.add(new Card(list[1]));
 					}
-					else if(list[3]=="Computer"){
-						
-						players.add(new ComputerPlayer(list[1],list[2],Integer.parseInt(list[4]),Integer.parseInt(list[5])));
-						deck.add(new Card(list[1]));
-						
-					}else {
-						weapons.add(list[1]);
-						deck.add(new Card(list[1]));
-					}
-					
-					
 				}
+				
 				else {
-					
 					throw new BadConfigFormatException("Bad Exception");
 				}
 				
@@ -161,26 +165,26 @@ public class Board {
 	public void loadLayoutConfig() throws BadConfigFormatException {
 		
 		loadLayoutConfigTryCatch();
-																		//refactoring
+																			//refactoring
 	}
 	
 	private void loadLayoutConfigTryCatch() throws BadConfigFormatException {
 		
 		try {
 			
-			ArrayList<String> list = new ArrayList<String>();		//creates new array
+			ArrayList<String> list = new ArrayList<String>();				//creates new array
 			 
-			File file = new File(layoutConfiFile);					//reads file
+			File file = new File(layoutConfiFile);							//reads file
 	        Scanner input = new Scanner(file);
 	         
 	         nextLine(list, input);
 	        
-	         input.close();											//closes file
+	         input.close();													//closes file
 	         
 	         
-	        numRows=list.size();									//rows size
+	        numRows=list.size();											//rows size
 	        String[] list1 = list.get(0).split(",");
-	        numColumns = list1.length;								//finding column size
+	        numColumns = list1.length;										//finding column size
 	        
 	        for (String i: list) 
 	        {
@@ -558,7 +562,56 @@ public class Board {
 	
 	public void deal() {
 		
+	
+	}
+
+
+
+	public Solution getSolution() {
+		// TODO Auto-generated method stub
+		return theAnswer;
+	}
+
+
+	public ArrayList<Card> getDeck() {
+		// TODO Auto-generated method stub
+		return deck;
+	}
+	
+	public ArrayList<Player> getPlayerList() {
+		return players;
 		
+	}
+	public Player getPlayer(String player) {
+		/*
+		for(int i=0;i<6;i++) {
+			if(players.get(i).equals(player)) {
+				return players.get(i);
+			}
+			
+		}
+		*/
+		return new ComputerPlayer("h", "h", 0, 0);
+		
+	}
+
+
+	public ArrayList<Card> getUsedCards() {
+		
+		return usedCards;
+		
+		
+		
+	}
+
+
+
+
+
+	public Object getCard(String string, CardType person) {
+		// TODO Auto-generated method stub
+		Card card=new Card(string);
+		return card;
 	}
 	
 	

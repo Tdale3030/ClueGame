@@ -29,12 +29,12 @@ public class BoardAdjTargetTest {
 		// Initialize will load config files 
 		board.initialize();
 	}
-
+ 
 	// Ensure that player does not move around within room
 	// These cells are LIGHT ORANGE on the planning spreadsheet
 	@Test
 	public void testAdjacenciesRooms()
-	{
+	{ 
 		// we want to test a couple of different rooms.
 		// First, the Conservatory that only has a single door but a secret room
 		Set<BoardCell> testList = board.getAdjList(2, 19);
