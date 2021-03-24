@@ -45,7 +45,6 @@ public class Board {
 		this.adjList = new HashSet<BoardCell>();
 		this.pathTargets = new HashSet<BoardCell>();
 		this.visited = new HashSet<BoardCell>();
-		this.deck = new ArrayList<Card>();
 		this.players = new ArrayList<Player>();
 	}
 
@@ -94,6 +93,7 @@ public class Board {
 	
 	public void loadSetupConfig() throws BadConfigFormatException {
 		
+		this.deck = new ArrayList<Card>();
 		loadSetUpConfigTryCatch();										//refactoring
 
 	}
@@ -126,24 +126,24 @@ public class Board {
 					if(list[3].equals("Human")) 
 					{
 						players.add(new HumanPlayer(list[1],list[2],Integer.parseInt(list[4]),Integer.parseInt(list[5])));		//adds to human player arrayList
-						deck.add(new Card(list[1]));									//adds human player to deck
+						deck.add(new Card(list[1], list[0]));									//adds human player to deck
 					}
 					else if(list[3].equals("Computer"))
 					{
 						players.add(new ComputerPlayer(list[1],list[2],Integer.parseInt(list[4]),Integer.parseInt(list[5])));	//adds to computer plan arrayList
-						deck.add(new Card(list[1]));									//adds computer player to deck
+						deck.add(new Card(list[1], list[0]));									//adds computer player to deck
 					}
 					continue;
 				}
 				else if (list[0].equals("Weapon")) {
-					deck.add(new Card(list[1]));
+					deck.add(new Card(list[1], list[0]));
 					continue;//adds weapons to deck
 				}
 				if(list[0].equals("Room") || list[0].equals("Space")) 
 				{		//making the map correctly
 					roomMap.put(list[2].charAt(0), new Room(list[1]));
 					if ( list[0].equals("Room") ) {
-						deck.add(new Card(list[1]));
+						deck.add(new Card(list[1], list[0]));
 					}
 				}
 				
@@ -573,8 +573,8 @@ public class Board {
 	}
 
 
-	public ArrayList<Card> getDeck() {
-		// TODO Auto-generated method stub
+	public ArrayList<Card> getDeck() 
+	{
 		return deck;
 	}
 	
@@ -604,14 +604,17 @@ public class Board {
 		
 	}
 
-
-
-
-
-	public Object getCard(String string, CardType person) {
-		// TODO Auto-generated method stub
-		Card card=new Card(string);
-		return card;
+	public Card getCard(String string, CardType type) {
+		
+		for(Card i : deck) 
+		{
+			if(i.getCardName().equals(string) && i.getType() == type) 
+			{
+				return i;
+			}
+		}
+		
+		return null;
 	}
 	
 	
