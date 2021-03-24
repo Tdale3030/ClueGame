@@ -43,6 +43,18 @@ class gameSetupTest {
 		assertTrue(deck.contains(board.getCard("Gungi", CardType.PERSON)));
 
 	}
+	
+	@Test
+	public void solutionTesting() {
+		Solution solution = board.getSolution();
+		assertTrue(solution.getRoom().getType() == CardType.ROOM);
+		assertTrue(solution.getRoom() != null);
+		assertTrue(solution.getWeapon() != null);
+		assertTrue(solution.getPerson() != null);
+		assertTrue(solution.getWeapon().getType() == CardType.WEAPON);
+		assertTrue(solution.getPerson().getType() == CardType.PERSON);
+	}
+	
 	@Test
 	public void playerTesting() {
 		ArrayList<Player> players = board.getPlayerList();
@@ -59,22 +71,11 @@ class gameSetupTest {
 		assertTrue(board.getPlayer("Windu").getColor() == Color.magenta);
 	}
 
-	@Test
-	public void solutionTesting() {
-		Solution solution = board.getSolution();
-		assertTrue(solution.getRoom().getType() == CardType.ROOM);
-		assertTrue(solution.getRoom() != null);
-		assertTrue(solution.getWeapon() != null);
-		assertTrue(solution.getPerson() != null);
-		assertTrue(solution.getWeapon().getType() == CardType.WEAPON);
-		assertTrue(solution.getPerson().getType() == CardType.PERSON);
-	}
 	  @Test
 	    public void handTesting() {
 	        ArrayList<Player> players = board.getPlayerList();
-	        ArrayList<Card> alreadyTaken = board.getUsedCards();
 	        assertEquals(3 , players.get(0).getHand().size());
-	        assertEquals(21 , alreadyTaken.size());
+	       
 	    }
 
 }

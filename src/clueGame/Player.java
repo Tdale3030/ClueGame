@@ -19,27 +19,33 @@ public abstract class Player {
 	
 		
 		
-		if(color.equals("Blue")) {
+		if(color.equals("Blue")) 
+		{
 			this.color=Color.blue;
 			
 		}
-		if(color.equals("Red")) {
+		if(color.equals("Red")) 
+		{
 			this.color=Color.red;
 			
 		}
-		if(color.equals("Green")) {
+		if(color.equals("Green")) 
+		{
 			this.color=Color.green;
 			
 		}
-		if(color.equals("Orange")) {
+		if(color.equals("Orange")) 
+		{
 			this.color=Color.orange;
 			
 		}
-		if(color.equals("Purple")) {
+		if(color.equals("Purple")) 
+		{
 			this.color=Color.magenta;
 			
 		}
-		if(color.equals("Yellow")) {
+		if(color.equals("Yellow")) 
+		{
 			this.color=Color.yellow;
 			
 		}
@@ -49,6 +55,7 @@ public abstract class Player {
 		this.location= new int[2];
 		this.location[0]=this.row;
 		this.location[1]=this.col;
+		this.hand=new ArrayList<Card>();
 	}
 	
 	
@@ -57,26 +64,29 @@ public abstract class Player {
 		hand.add(card);
 		
 	}
-	
 
 	public String getName() {
+		
 		return name;
 	}
 
 
 
 	public Color getColor() {
+		
 		return color;
 	}
 
 
 	public int getRow() {
+		
 		return row;
 	}
 
 
 
 	public int getCol() {
+		
 		return col;
 	}
 
@@ -90,7 +100,7 @@ public abstract class Player {
 
 	public ArrayList<Card> getHand(){
 		
-		return null;
+		return hand;
 	}
 	
 

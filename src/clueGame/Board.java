@@ -94,8 +94,9 @@ public class Board {
 
 	
 	public void loadSetupConfig() throws BadConfigFormatException {
-		
+		this.usedCards= new ArrayList<Card>();
 		this.deck = new ArrayList<Card>();
+		this.players = new ArrayList<Player>();
 		loadSetUpConfigTryCatch();										//refactoring
 
 	}
@@ -123,33 +124,34 @@ public class Board {
 				{					//trimming the file
 					list[i] = list[i].trim();
 				}
+				
 				if(list[0].equals("Character")) 
 				{
 					if(list[3].equals("Human")) 
 					{
 						players.add(new HumanPlayer(list[1],list[2],Integer.parseInt(list[4]),Integer.parseInt(list[5])));		//adds to human player arrayList
-						deck.add(new Card(list[1], list[0]));									//adds human player to deck
-					}
-					else if(list[3].equals("Computer"))
+						deck.add(new Card(list[1], list[0]));	
+						//adds human player to deck
+					}else if(list[3].equals("Computer"))
 					{
 						players.add(new ComputerPlayer(list[1],list[2],Integer.parseInt(list[4]),Integer.parseInt(list[5])));	//adds to computer plan arrayList
 						deck.add(new Card(list[1], list[0]));									//adds computer player to deck
 					}
+					
 					continue;
-				}
-				else if (list[0].equals("Weapon")) {
+					
+				}else if (list[0].equals("Weapon")) 
+				{
 					deck.add(new Card(list[1], list[0]));
 					continue;//adds weapons to deck
-				}
-				if(list[0].equals("Room") || list[0].equals("Space")) 
+					
+				}if(list[0].equals("Room") || list[0].equals("Space")) 
 				{		//making the map correctly
 					roomMap.put(list[2].charAt(0), new Room(list[1]));
 					if ( list[0].equals("Room") ) {
 						deck.add(new Card(list[1], list[0]));
 					}
-				}
-				
-				else {
+				}else {
 					throw new BadConfigFormatException("Bad Exception");
 				}
 				
@@ -157,7 +159,8 @@ public class Board {
 			
 			input.close();													//close file
 		
-		}catch(FileNotFoundException exp){
+		}catch(FileNotFoundException exp)
+		{
 			System.out.println("File cannot open ");						//file cannot open thrown exception
 
 		}
@@ -564,12 +567,12 @@ public class Board {
 	
 	public void deal() 
 	{
-		this.usedCards = new ArrayList<Card>();
-		Collections.shuffle(deck);
 		
-		for(int i = 0; i < deck.size(); i++) 
+		Collections.shuffle(deck);//Shuffles deck
+		
+		for(int i = 0; i < deck.size(); i++) //iterates through deck
 		{
-			if (usedCards.contains(deck.get(i))) 
+			if (usedCards.contains(deck.get(i))) //if the card is used continue
 			{
 				continue;
 			}
@@ -579,26 +582,53 @@ public class Board {
 			case WEAPON:
 				if(theAnswer.getWeapon() == null)
 				{
-					theAnswer.setWeapon(deck.get(i));
+					theAnswer.setWeapon(deck.get(i));// sets the solutions weapon
 					usedCards.add(deck.get(i));
 				}
 				break;
 			case ROOM:
 				if(theAnswer.getRoom() == null)
 				{
-					theAnswer.setRoom(deck.get(i));
+					theAnswer.setRoom(deck.get(i));// sets the solutions weapon
 					usedCards.add(deck.get(i));
 				}
 				break;
 			case PERSON:
 				if(theAnswer.getPerson() == null)
 				{
-					theAnswer.setPerson(deck.get(i));
+					theAnswer.setPerson(deck.get(i));// sets the solutions weapon
 					usedCards.add(deck.get(i));
 				}
 				break;
 				
 			}
+			
+			
+		}
+		for(int i=0;i<players.size();i++)//iterates through lists of players
+		{
+			int count = 0;
+			
+			for(int j=0;j<deck.size();j++)//iterates through deck
+			{
+				
+				if(usedCards.contains(deck.get(j))) // continue if is a used card
+				{
+					continue;
+			
+				}
+				
+				players.get(i).updateHand(deck.get(j)); //give card to player
+				usedCards.add(deck.get(j));
+				count=count+1;
+					
+				if(count==3) //break loop when each player has three cards
+				{
+					break;
+				}
+			}
+			
+			
 		}
 	
 	}
@@ -623,7 +653,8 @@ public class Board {
 	public Player getPlayer(String player) 
 	{
 		
-		for(int i=0;i<6;i++) {
+		for(int i=0;i<players.size();i++) //loops through players list and finds the player 
+		{
 			if(players.get(i).getName().equals(player)) {
 				return players.get(i);
 			}
@@ -642,7 +673,7 @@ public class Board {
 	public Card getCard(String string, CardType type) 
 	{
 		
-		for(Card i : deck) 
+		for(Card i : deck) //iterates through cards until it finds the card that wanted
 		{
 			if(i.getCardName().equals(string) && i.getType() == type) 
 			{

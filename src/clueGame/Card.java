@@ -6,6 +6,7 @@ public class Card {
 	private CardType cardType;
 
 	public Card(String cardName, String type) {
+		
 		super();
 		this.cardName = cardName;
 		
@@ -29,10 +30,12 @@ public class Card {
 	}
 
 	public String getCardName() {
+		
 		return cardName;
 	}
 
 	public void setCardName(String cardName) {
+		
 		this.cardName = cardName;
 	}
 	
