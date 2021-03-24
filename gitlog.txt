@@ -1,3 +1,9 @@
+commit 0867c6b65d8e36df92c4354bab9c5d5583faf3b2
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Tue Mar 23 21:45:22 2021 -0600
+
+    First test passed
+
 commit bbbf50497d5472af4fcb23e5d61251ec5803f4c6
 Author: brodyclark <brodyclark@mymail.mines.edu>
 Date:   Tue Mar 23 00:12:12 2021 -0600
