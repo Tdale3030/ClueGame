@@ -583,15 +583,15 @@ public class Board {
 		
 	}
 	public Player getPlayer(String player) {
-		/*
+		
 		for(int i=0;i<6;i++) {
-			if(players.get(i).equals(player)) {
+			if(players.get(i).getName().equals(player)) {
 				return players.get(i);
 			}
 			
 		}
-		*/
-		return new ComputerPlayer("h", "h", 0, 0);
+		
+		return null;
 		
 	}
 

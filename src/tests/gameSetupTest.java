@@ -17,6 +17,7 @@ import clueGame.CardType;
 import clueGame.ComputerPlayer;
 import clueGame.HumanPlayer;
 import clueGame.Player;
+import clueGame.Solution;
 
 class gameSetupTest {
 
@@ -47,15 +48,26 @@ private static Board board;
         ArrayList<Player> players = board.getPlayerList();
         assertEquals(6, players.size());
         Player player = board.getPlayer("Anakin");
-         assertTrue(player instanceof HumanPlayer);
+        assertTrue(player instanceof HumanPlayer);
         player = board.getPlayer("Boba");
         assertTrue(player instanceof ComputerPlayer);
         assertTrue(players.contains(board.getPlayer("Gungi")));
         assertTrue(players.contains(board.getPlayer("Kenobi")));
         assertTrue(Arrays.equals(board.getPlayer("Anakin").getLocation(), new int[] {15,0}));
         assertTrue(Arrays.equals( board.getPlayer("Maul").getLocation(), new int[] {21,16}));
-        assertTrue(board.getPlayer("Maul").getColor() == Color.RED);
-        assertTrue(board.getPlayer("Windu").getColor() == Color.BLUE);
+        assertTrue(board.getPlayer("Maul").getColor() == Color.red);
+        assertTrue(board.getPlayer("Windu").getColor() == Color.magenta);
     }
+	
+	 @Test
+	    public void solutionTesting() {
+	        Solution solution = board.getSolution();
+	        assertTrue(solution.getRoom().getType() == CardType.ROOM);
+	        assertTrue(solution.getRoom() != null);
+	        assertTrue(solution.getWeapon() != null);
+	        assertTrue(solution.getPerson() != null);
+	        assertTrue(solution.getWeapon().getType() == CardType.WEAPON);
+	        assertTrue(solution.getPerson().getType() == CardType.PERSON);
+	    }
 
 }

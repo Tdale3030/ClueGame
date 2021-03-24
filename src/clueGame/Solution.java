@@ -6,11 +6,9 @@ public class Solution {
 	public Card weapon;
 	
 	
-	public Solution(Card person, Card room, Card weapon) {
+	public Solution() {
 		super();
-		this.person = person;
-		this.room = room;
-		this.weapon = weapon;
+		
 	}
 
 
