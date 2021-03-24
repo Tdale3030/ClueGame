@@ -69,5 +69,12 @@ class gameSetupTest {
 		assertTrue(solution.getWeapon().getType() == CardType.WEAPON);
 		assertTrue(solution.getPerson().getType() == CardType.PERSON);
 	}
+	  @Test
+	    public void handTesting() {
+	        ArrayList<Player> players = board.getPlayerList();
+	        ArrayList<Card> alreadyTaken = board.getUsedCards();
+	        assertEquals(3 , players.get(0).getHand().size());
+	        assertEquals(21 , alreadyTaken.size());
+	    }
 
 }
