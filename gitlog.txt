@@ -1,3 +1,9 @@
+commit f93d80d4d26a2661e8a9616810cfbb9cce3b6c47
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Tue Mar 23 22:26:43 2021 -0600
+
+    third test implemented
+
 commit b2f73479f13fe3a72f30b16cb616602916825ec5
 Author: brodyclark <brodyclark@mymail.mines.edu>
 Date:   Tue Mar 23 22:24:49 2021 -0600

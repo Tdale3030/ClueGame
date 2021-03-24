@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -46,6 +47,7 @@ public class Board {
 		this.pathTargets = new HashSet<BoardCell>();
 		this.visited = new HashSet<BoardCell>();
 		this.players = new ArrayList<Player>();
+		this.theAnswer = new Solution();
 	}
 
 
@@ -72,8 +74,8 @@ public class Board {
 	public void initialize() throws BadConfigFormatException, FileNotFoundException{
 		
 		initializeTryCatch();
-		//deal();
 		allAdj();
+		deal();
 																		//refactoring
 	}
 	
@@ -560,8 +562,44 @@ public class Board {
 	}
 
 	
-	public void deal() {
+	public void deal() 
+	{
+		this.usedCards = new ArrayList<Card>();
+		Collections.shuffle(deck);
 		
+		for(int i = 0; i < deck.size(); i++) 
+		{
+			if (usedCards.contains(deck.get(i))) 
+			{
+				continue;
+			}
+			switch (deck.get(i).getType())
+			{
+			
+			case WEAPON:
+				if(theAnswer.getWeapon() == null)
+				{
+					theAnswer.setWeapon(deck.get(i));
+					usedCards.add(deck.get(i));
+				}
+				break;
+			case ROOM:
+				if(theAnswer.getRoom() == null)
+				{
+					theAnswer.setRoom(deck.get(i));
+					usedCards.add(deck.get(i));
+				}
+				break;
+			case PERSON:
+				if(theAnswer.getPerson() == null)
+				{
+					theAnswer.setPerson(deck.get(i));
+					usedCards.add(deck.get(i));
+				}
+				break;
+				
+			}
+		}
 	
 	}
 
@@ -582,7 +620,8 @@ public class Board {
 		return players;
 		
 	}
-	public Player getPlayer(String player) {
+	public Player getPlayer(String player) 
+	{
 		
 		for(int i=0;i<6;i++) {
 			if(players.get(i).getName().equals(player)) {
@@ -595,16 +634,13 @@ public class Board {
 		
 	}
 
-
 	public ArrayList<Card> getUsedCards() {
 		
 		return usedCards;
-		
-		
-		
 	}
 
-	public Card getCard(String string, CardType type) {
+	public Card getCard(String string, CardType type) 
+	{
 		
 		for(Card i : deck) 
 		{
