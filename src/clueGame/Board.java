@@ -43,6 +43,7 @@ public class Board {
 
 
 	private void boardCreation() {
+		
 		for(int i=0;i<numRows;i++) 
 		{
 			for(int j=0;j<numColumns;j++) 
@@ -85,6 +86,7 @@ public class Board {
 
 	
 	public void loadSetupConfig() throws BadConfigFormatException {
+		
 		this.usedCards= new ArrayList<Card>();
 		this.deck = new ArrayList<Card>();
 		this.players = new ArrayList<Player>();
@@ -102,7 +104,6 @@ public class Board {
 	}
 	
 	private void loadSetUpConfigTryCatch() throws BadConfigFormatException {
-		
 		
 		try {
 			
@@ -231,6 +232,7 @@ public class Board {
 
 
 	private void nextLine(ArrayList<String> list, Scanner input) throws BadConfigFormatException {
+		
 		while (input.hasNext()) 
 		 {								//while loop
 			 String next = input.nextLine();
@@ -249,6 +251,7 @@ public class Board {
 
 
 	private void ifStatementsForDoorway(String[] list2, int j, BoardCell BoardCell2) {
+		
 		if(list2[j].length() == 2) 
 		{
 			if(list2[j].charAt(1)== '*') 
@@ -302,6 +305,7 @@ public class Board {
 
 
 	private void addingTo(int numSteps) {
+		
 		for(BoardCell i: adjList) 
 		{								//for loop for adjlist
 			if(visited.contains(i)) 
@@ -360,6 +364,7 @@ public class Board {
 
 
 	private void secretPassageForLoops() {
+		
 		for(int a = 0; a<numRows; a++) 
 		{
 			for (int b = 0; b<numColumns; b++) 
@@ -377,8 +382,8 @@ public class Board {
 	}
 	
 	
-	private void findingDoorDirection(int i, int j) 
-	{
+	private void findingDoorDirection(int i, int j) {
+		
 		for(int a = 0; a<numRows; a++) 
 		{
 			for (int b = 0; b<numColumns; b++)
@@ -391,6 +396,7 @@ public class Board {
 
 
 	private void ifStatementsForDoorDir(int i, int j, int a, int b) {
+		
 		if(gridBoard[a][b].isDoorway()) 
 		{
 			if(gridBoard[a][b].getDoorDirection() == DoorDirection.UP)
@@ -426,12 +432,13 @@ public class Board {
 
 
 	private void addToAdj(int i, int j, int a, int b) {
+		
 		gridBoard[i][j].addAdjacency(gridBoard[a][b]);
 	}
 	
 	
-	private void isDoorwayRefactored(int i, int j) 
-	{
+	private void isDoorwayRefactored(int i, int j) {
+		
 		if(gridBoard[i][j].isDoorway()) 
 		{
 			DoorDirection dir = DoorDirection.NONE;
@@ -470,8 +477,8 @@ public class Board {
 	}
 	
 	
-	private void getInitialAdding(int i, int j) 
-	{
+	private void getInitialAdding(int i, int j) {
+		
 		if ((i-1) >= 0) 
 		{
 			if(gridBoard[i][j].getInitial() == gridBoard[i-1][j].getInitial()) 
@@ -511,8 +518,8 @@ public class Board {
 	    }
 	
 	
-	public void calcTargets( BoardCell startCell, int pathlength) 
-	{
+	public void calcTargets( BoardCell startCell, int pathlength) {
+		
 		visited = new HashSet<BoardCell>();
 		pathTargets = new HashSet<BoardCell>();
 		
@@ -522,27 +529,27 @@ public class Board {
 	}
 	
 	
-	public Set<BoardCell> getTargets() 
-	{
+	public Set<BoardCell> getTargets() {
+		
 		return pathTargets;
 	}
 	
 	
 	
-	public Room getRoom(char symbol) 
-	{
+	public Room getRoom(char symbol) {
+		
         return roomMap.get(symbol);
     }
 	
 	
-    public Room getRoom(BoardCell cell) 
-    {
+    public Room getRoom(BoardCell cell) {
+    	
         return roomMap.get(cell.getInitial());
     }
     
     
-    public BoardCell getCell(int row, int col) 
-    {
+    public BoardCell getCell(int row, int col) {
+    	
         return gridBoard[row][col];//returns the value of the cell
     }
     
@@ -559,14 +566,13 @@ public class Board {
 	}
 	
 	
-	public Set<BoardCell> getAdjList(int i, int j) 
-	{
+	public Set<BoardCell> getAdjList(int i, int j) {
+		
 		return gridBoard[i][j].getAdjList();								//return adjlist
 	}
 
 	
-	public void deal() 
-	{
+	public void deal() {
 		
 		Collections.shuffle(deck);//Shuffles deck
 		
@@ -632,17 +638,40 @@ public class Board {
 		}
 	
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public boolean checkAccusation() {
+		
+		return true;
+	}
+	public Card handleSuggestions() {
+		
+		return null;
+		
+	}
 
 
 
+	
+	
+	
+	
+	
 	public Solution getSolution() {
 		// TODO Auto-generated method stub
 		return theAnswer;
 	}
 
 
-	public ArrayList<Card> getDeck() 
-	{
+	public ArrayList<Card> getDeck() {
+		
 		return deck;
 	}
 	
@@ -650,8 +679,8 @@ public class Board {
 		return players;
 		
 	}
-	public Player getPlayer(String player) 
-	{
+	public Player getPlayer(String player) {
+		
 		
 		for(int i=0;i<players.size();i++) //loops through players list and finds the player 
 		{
@@ -670,8 +699,7 @@ public class Board {
 		return usedCards;
 	}
 
-	public Card getCard(String string, CardType type) 
-	{
+	public Card getCard(String string, CardType type) {
 		
 		for(Card i : deck) //iterates through cards until it finds the card that wanted
 		{

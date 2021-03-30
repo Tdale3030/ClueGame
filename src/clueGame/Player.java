@@ -11,6 +11,7 @@ public abstract class Player {
 	protected int col;
 	private int[] location;
 	private ArrayList<Card> hand;
+	private ArrayList<Card> seenCards;
 	
 	
 	public Player(String name, String color, int row, int col) {
@@ -84,7 +85,6 @@ public abstract class Player {
 	}
 
 
-
 	public int getCol() {
 		
 		return col;
@@ -102,6 +102,23 @@ public abstract class Player {
 		
 		return hand;
 	}
+	
+	
+	
+	
+	
+	
+	
+	public Card disproveSuggestion() {
+		
+		return null;
+	}
+	
+	public void updateSeen(Card seenCard) {
+		
+	}
+	
+	
 	
 
 }

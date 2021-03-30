@@ -10,4 +10,21 @@ public class ComputerPlayer extends Player {
 		// TODO Auto-generated constructor stub
 	
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	public Solution createSuggestion() {
+		
+		return null;
+	}
+	
+	public BoardCell selectTargets() {
+		
+		return null;
+	}
 }
