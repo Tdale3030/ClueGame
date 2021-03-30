@@ -37,17 +37,8 @@ public class Board {
 	private Board() {
 		super() ;
 		
-		roomMap = new HashMap<Character, Room>();
-		this.adjList = new HashSet<BoardCell>();
-		this.gridBoard=new BoardCell[numRows][numColumns];
-		
 		boardCreation();
 		
-		this.adjList = new HashSet<BoardCell>();
-		this.pathTargets = new HashSet<BoardCell>();
-		this.visited = new HashSet<BoardCell>();
-		this.players = new ArrayList<Player>();
-		this.theAnswer = new Solution();
 	}
 
 
@@ -97,6 +88,15 @@ public class Board {
 		this.usedCards= new ArrayList<Card>();
 		this.deck = new ArrayList<Card>();
 		this.players = new ArrayList<Player>();
+		roomMap = new HashMap<Character, Room>();
+		this.adjList = new HashSet<BoardCell>();
+		this.gridBoard=new BoardCell[numRows][numColumns];
+		this.adjList = new HashSet<BoardCell>();
+		this.pathTargets = new HashSet<BoardCell>();
+		this.visited = new HashSet<BoardCell>();
+		this.players = new ArrayList<Player>();
+		this.theAnswer = new Solution();
+		
 		loadSetUpConfigTryCatch();										//refactoring
 
 	}
