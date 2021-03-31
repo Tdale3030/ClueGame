@@ -3,6 +3,7 @@ package clueGame;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Set;
 
 public abstract class Player {
 	
@@ -19,8 +20,6 @@ public abstract class Player {
 		super();
 		this.name = name;
 	
-		
-		
 		if(color.equals("Blue")) 
 		{
 			this.color=Color.blue;
@@ -105,18 +104,12 @@ public abstract class Player {
 		return hand;
 	}
 	
-	
-	
-	
-	
-	
-	
 	public Card disproveSuggestion(Solution solution) {
 		
 		Collections.shuffle(hand);
 		for(int i = 0; i < hand.size(); i++) 
 		{
-			if(hand.get(i) == solution.getPerson()) 
+			if(hand.get(i) == solution.getPerson()) 			//if statements to find the correct hand
 			{
 				return hand.get(i);
 			}
@@ -139,6 +132,6 @@ public abstract class Player {
 	
 	public abstract Solution createSuggestion(ArrayList<Card> deck, Room room);
 	
-	public abstract BoardCell selectTargets();
+	public abstract BoardCell selectTargets(Set<BoardCell> targets);
 
 }

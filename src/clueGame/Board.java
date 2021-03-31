@@ -42,15 +42,8 @@ public class Board {
 		this.gridBoard=new BoardCell[numRows][numColumns];
 		
 		boardCreation();
-		
-		this.adjList = new HashSet<BoardCell>();
-		this.pathTargets = new HashSet<BoardCell>();
-		this.visited = new HashSet<BoardCell>();
-		this.players = new ArrayList<Player>();
-		this.theAnswer = new Solution();
-		
-	}
 
+	}
 
 	private void boardCreation() {
 		
@@ -100,6 +93,11 @@ public class Board {
 		this.usedCards= new ArrayList<Card>();
 		this.deck = new ArrayList<Card>();
 		this.players = new ArrayList<Player>();
+		this.adjList = new HashSet<BoardCell>();
+		this.pathTargets = new HashSet<BoardCell>();
+		this.visited = new HashSet<BoardCell>();
+		this.players = new ArrayList<Player>();
+		this.theAnswer = new Solution();
 		
 		loadSetUpConfigTryCatch();										//refactoring
 
@@ -441,7 +439,7 @@ public class Board {
 	
 	private void isDoorwayRefactored(int i, int j) {
 		
-		if(gridBoard[i][j].isDoorway()) 
+		if(gridBoard[i][j].isDoorway()) 				
 		{
 			DoorDirection dir = DoorDirection.NONE;
 					
@@ -641,36 +639,30 @@ public class Board {
 	
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	public boolean checkAccusation(Solution solution) {
+	public boolean checkAccusation(Solution solution) {					//checking to see if answer and solution match
 		
 		if ((theAnswer.getPerson() == solution.getPerson()) && (theAnswer.getWeapon() == solution.getWeapon()) && (theAnswer.getRoom() == solution.getRoom()))
 		{
 			return true;
 			
-		}else {
+		}else {					//if yes, return true, if not, return false
 			return false;
 		}
 	}
-	public Card handleSuggestions() {
+	
+	public Card handleSuggestions(Solution solution) {
 		
-		return new Card(" ", " ");
+		for (int i = 0; i < players.size(); i++) 						//if it does not equal a null, then return it
+		{
+			if(players.get(i).disproveSuggestion(solution) != null) 
+			{
+				return players.get(i).disproveSuggestion(solution);
+			}
+		}
+		
+		return null;
 		
 	}
-
-
-
-	
-	
-	
-	
 	
 	public Solution getSolution() {
 		// TODO Auto-generated method stub
@@ -694,8 +686,11 @@ public class Board {
 		return players;
 		
 	}
+	
+	public void playerList(ArrayList<Player> list) {
+		this.players = list;
+	}
 	public Player getPlayer(String player) {
-		
 		
 		for(int i=0;i<players.size();i++) //loops through players list and finds the player 
 		{

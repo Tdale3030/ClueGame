@@ -1,6 +1,7 @@
 package clueGame;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 public class HumanPlayer extends Player {
 	
@@ -15,7 +16,7 @@ public class HumanPlayer extends Player {
 		return new Solution();
 	}
 	
-	public BoardCell selectTargets() {
+	public BoardCell selectTargets(Set<BoardCell> targets) {
 		
 		return new BoardCell(0, 0);
 	}
