@@ -10,9 +10,7 @@ public class HumanPlayer extends Player {
 	}
 	
 	
-	
-	
-	public Solution createSuggestion() {
+	public Solution createSuggestion(ArrayList<Card> deck, Room room) {
 		
 		return new Solution();
 	}

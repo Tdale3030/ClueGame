@@ -132,7 +132,7 @@ public abstract class Player {
 		seenCards.add(seenCard);
 	}
 	
-	public abstract Solution createSuggestion();
+	public abstract Solution createSuggestion(ArrayList<Card> deck, Room room);
 	
 	public abstract BoardCell selectTargets();
 
