@@ -20,11 +20,11 @@ public class ComputerPlayer extends Player {
 	
 	public Solution createSuggestion() {
 		
-		return null;
+		return new Solution();
 	}
 	
 	public BoardCell selectTargets() {
 		
-		return null;
+		return new BoardCell(0, 0);
 	}
 }

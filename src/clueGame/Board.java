@@ -37,7 +37,17 @@ public class Board {
 	private Board() {
 		super() ;
 		
+		roomMap = new HashMap<Character, Room>();
+		this.adjList = new HashSet<BoardCell>();
+		this.gridBoard=new BoardCell[numRows][numColumns];
+		
 		boardCreation();
+		
+		this.adjList = new HashSet<BoardCell>();
+		this.pathTargets = new HashSet<BoardCell>();
+		this.visited = new HashSet<BoardCell>();
+		this.players = new ArrayList<Player>();
+		this.theAnswer = new Solution();
 		
 	}
 
@@ -90,14 +100,6 @@ public class Board {
 		this.usedCards= new ArrayList<Card>();
 		this.deck = new ArrayList<Card>();
 		this.players = new ArrayList<Player>();
-		roomMap = new HashMap<Character, Room>();
-		this.adjList = new HashSet<BoardCell>();
-		this.gridBoard=new BoardCell[numRows][numColumns];
-		this.adjList = new HashSet<BoardCell>();
-		this.pathTargets = new HashSet<BoardCell>();
-		this.visited = new HashSet<BoardCell>();
-		this.players = new ArrayList<Player>();
-		this.theAnswer = new Solution();
 		
 		loadSetUpConfigTryCatch();										//refactoring
 
@@ -647,13 +649,19 @@ public class Board {
 	
 	
 	
-	public boolean checkAccusation() {
+	public boolean checkAccusation(Solution solution) {
 		
-		return true;
+		if ((theAnswer.getPerson() == solution.getPerson()) && (theAnswer.getWeapon() == solution.getWeapon()) && (theAnswer.getRoom() == solution.getRoom()))
+		{
+			return true;
+			
+		}else {
+			return false;
+		}
 	}
 	public Card handleSuggestions() {
 		
-		return null;
+		return new Card(" ", " ");
 		
 	}
 
@@ -667,6 +675,13 @@ public class Board {
 	public Solution getSolution() {
 		// TODO Auto-generated method stub
 		return theAnswer;
+	}
+	
+	public void setSolution(Card cardOne, Card cardTwo, Card cardThree) {
+		
+		theAnswer.setRoom(cardOne);
+		theAnswer.setWeapon(cardTwo);
+		theAnswer.setPerson(cardThree);
 	}
 
 

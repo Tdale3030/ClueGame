@@ -1,3 +1,9 @@
+commit dc15170644eece6a1400ab9024adaef892244c53
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Tue Mar 30 18:14:51 2021 -0600
+
+    created new tests
+
 commit 04b7d14d2d812167f294fd34f3d942fd843b26b5
 Author: brodyclark <brodyclark@mymail.mines.edu>
 Date:   Tue Mar 30 17:52:36 2021 -0600

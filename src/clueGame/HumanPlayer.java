@@ -8,4 +8,17 @@ public class HumanPlayer extends Player {
 		super(name, color, row, col);
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	
+	
+	public Solution createSuggestion() {
+		
+		return new Solution();
+	}
+	
+	public BoardCell selectTargets() {
+		
+		return new BoardCell(0, 0);
+	}
 }

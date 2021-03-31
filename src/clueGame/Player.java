@@ -57,6 +57,7 @@ public abstract class Player {
 		this.location[0]=this.row;
 		this.location[1]=this.col;
 		this.hand=new ArrayList<Card>();
+		this.seenCards=new ArrayList<Card>();
 	}
 	
 	
@@ -111,14 +112,28 @@ public abstract class Player {
 	
 	public Card disproveSuggestion() {
 		
-		return null;
+		/*for(int i = 0; i < hand.length(); i++) 
+		{
+			for(int j = 0; j < hand.length(); j++) 
+			{
+				if(j == j + 1) {
+					return hand[i][j];;
+					
+				}else {
+					return null;
+				}
+			}
+		}*/
+		return new Card(" ", " ");
 	}
 	
 	public void updateSeen(Card seenCard) {
 		
+		seenCards.add(seenCard);
 	}
 	
+	public abstract Solution createSuggestion();
 	
-	
+	public abstract BoardCell selectTargets();
 
 }
