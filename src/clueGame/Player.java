@@ -10,8 +10,8 @@ public abstract class Player {
 	protected int row;
 	protected int col;
 	private int[] location;
-	private ArrayList<Card> hand;
-	private ArrayList<Card> seenCards;
+	protected ArrayList<Card> hand;
+	protected ArrayList<Card> seenCards;
 	
 	
 	public Player(String name, String color, int row, int col) {

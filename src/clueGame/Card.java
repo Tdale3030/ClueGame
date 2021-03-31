@@ -25,8 +25,13 @@ public class Card {
 	}
 	
 	public boolean equals(Card target) {
+		if(target.getCardName().equals(cardName) && target.getType() == cardType) 
+		{
+			return true;
 			
-		return true;
+		}else {
+			return false;
+		}
 	}
 
 	public String getCardName() {
