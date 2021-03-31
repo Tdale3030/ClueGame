@@ -2,6 +2,7 @@ package clueGame;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public abstract class Player {
 	
@@ -110,21 +111,25 @@ public abstract class Player {
 	
 	
 	
-	public Card disproveSuggestion() {
+	public Card disproveSuggestion(Solution solution) {
 		
-		/*for(int i = 0; i < hand.length(); i++) 
+		Collections.shuffle(hand);
+		for(int i = 0; i < hand.size(); i++) 
 		{
-			for(int j = 0; j < hand.length(); j++) 
+			if(hand.get(i) == solution.getPerson()) 
 			{
-				if(j == j + 1) {
-					return hand[i][j];;
-					
-				}else {
-					return null;
-				}
+				return hand.get(i);
 			}
-		}*/
-		return new Card(" ", " ");
+			if(hand.get(i) == solution.getRoom()) 
+			{
+				return hand.get(i);
+			}
+			if(hand.get(i) == solution.getWeapon()) 
+			{
+				return hand.get(i);
+			}
+		}
+		return null;
 	}
 	
 	public void updateSeen(Card seenCard) {

@@ -39,6 +39,7 @@ public class ComputerPlayer extends Player {
 				possibleSolution.setPerson(deck.get(i));
 			}
 		}
+		
 		return possibleSolution;
 	}
 	
