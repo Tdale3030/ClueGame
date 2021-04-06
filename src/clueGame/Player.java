@@ -72,25 +72,20 @@ public abstract class Player {
 		return name;
 	}
 
-
-
 	public Color getColor() {
 		
 		return color;
 	}
-
 
 	public int getRow() {
 		
 		return row;
 	}
 
-
 	public int getCol() {
 		
 		return col;
 	}
-
 
 	public int[] getLocation() {
 		
@@ -98,12 +93,21 @@ public abstract class Player {
 		
 	}
 
-
 	public ArrayList<Card> getHand(){
 		
 		return hand;
 	}
 	
+	public ArrayList<Card> getSeenCards() {
+		return seenCards;
+	}
+
+
+	public void setSeenCards(ArrayList<Card> seenCards) {
+		this.seenCards = seenCards;
+	}
+
+
 	public Card disproveSuggestion(Solution solution) {
 		
 		Collections.shuffle(hand);

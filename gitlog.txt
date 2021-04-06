@@ -1,3 +1,9 @@
+commit bdb8095cd8c5e03efac9aaeb1b18a5594c2457fd
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Mon Apr 5 21:35:01 2021 -0600
+
+    halfway
+
 commit ee30903cd07dda90a7460d5bac166523dbc8a565
 Author: brodyclark <brodyclark@mymail.mines.edu>
 Date:   Mon Apr 5 20:36:48 2021 -0600
