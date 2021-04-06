@@ -1,3 +1,15 @@
+commit d4071f43a25df4bcb20c2e35b7d29873d7084d28
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Mon Apr 5 20:34:59 2021 -0600
+
+    Finished
+
+commit 338dbe7819434d9a00385bbaf5ce0ef4fcde34ce
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Mon Apr 5 18:28:44 2021 -0600
+
+    pannel created
+
 commit 2957f444881fc3a8d2c862941571171682536571
 Author: brodyclark <brodyclark@mymail.mines.edu>
 Date:   Tue Mar 30 23:00:06 2021 -0600
