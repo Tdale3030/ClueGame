@@ -1,3 +1,15 @@
+commit 2957f444881fc3a8d2c862941571171682536571
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Tue Mar 30 23:00:06 2021 -0600
+
+    finished code
+
+commit 77c461f96bca046e5f5155e44d85012d6708bdc2
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Tue Mar 30 22:01:08 2021 -0600
+
+    next test passing
+
 commit b1a67531fdec5893476e2cbe3ff2b7db551ba17e
 Author: brodyclark <brodyclark@mymail.mines.edu>
 Date:   Tue Mar 30 21:20:49 2021 -0600
