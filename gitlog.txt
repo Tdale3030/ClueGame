@@ -1,3 +1,9 @@
+commit ee30903cd07dda90a7460d5bac166523dbc8a565
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Mon Apr 5 20:36:48 2021 -0600
+
+    bugs cleaned
+
 commit d4071f43a25df4bcb20c2e35b7d29873d7084d28
 Author: brodyclark <brodyclark@mymail.mines.edu>
 Date:   Mon Apr 5 20:34:59 2021 -0600
