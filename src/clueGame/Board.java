@@ -43,13 +43,56 @@ public class Board extends JPanel {
 		
 		boardCreation();
 		
-		setBackground(Color.BLACK);
+		setBackground(Color.BLACK);										//sets background to black twice
 
 	}
 	
 	public void paintComponent(Graphics graphics) {
 		
-		repaint();
+		super.paintComponent(graphics);									//sets background to black
+		setBackground(Color.BLACK);
+		
+		for(int i = 0; i < numRows; i++) 								//nested for loops for the grid
+		{
+			for(int j = 0; j < numColumns;j++) 
+			{
+				gridBoard[i][j].setWidth(getWidth() / numRows);					//drawing the grid onto the black
+				gridBoard[i][j].setHeight(getHeight() / numColumns);
+				gridBoard[i][j].draw(graphics);
+			}
+
+		}
+		for(int i = 0; i < numRows; i++) 								//nested for loops for the grid
+		{
+			for(int j = 0; j < numColumns;j++) 
+			{
+				gridBoard[i][j].setWidth(getWidth() / numRows);					//drawing the grid onto the black
+				gridBoard[i][j].setHeight(getHeight() / numColumns);
+				gridBoard[i][j].drawDoorway(graphics);
+			}
+
+		}
+
+		for(int i = 0; i < numRows; i++) 
+		{
+			for(int j = 0; j < numColumns;j++) 
+			{
+				if (gridBoard[i][j].isLabel()) {
+					roomMap.get(gridBoard[i][j].getInitial()).setWidth(getWidth() / numRows);					//drawing the room names
+					roomMap.get(gridBoard[i][j].getInitial()).setHeight(getHeight() / numColumns);;
+					roomMap.get(gridBoard[i][j].getInitial()).drawRoom(graphics);
+				}
+			}
+
+		}
+
+		for(int i = 0; i < players.size(); i++) 
+		{
+			players.get(i).setWidth(getWidth() / numRows);									//drawing the players as circles
+			players.get(i).setHeight(getHeight() / numColumns);
+			players.get(i).draw(graphics);
+		}
+		repaint();																	//repaints
 	}
 
 	private void boardCreation() {
@@ -221,6 +264,8 @@ public class Board extends JPanel {
 	        		BoardCell BoardCell2 = new BoardCell(i, j);
 	        		
 	        		BoardCell2.setInitial(list2[j].charAt(0));
+	        		
+	        		
 	        		
 	        		ifStatementsForDoorway(list2, j, BoardCell2);
 	        		

@@ -15,7 +15,7 @@ public class Card {
 			cardType = CardType.ROOM;
 		}
 		if(type.equals("Character")) 
-		{
+		{ 
 			cardType = CardType.PERSON;
 		}
 		if(type.equals("Weapon")) 

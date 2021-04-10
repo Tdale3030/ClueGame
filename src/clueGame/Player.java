@@ -1,6 +1,7 @@
 package clueGame;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Set;
@@ -14,12 +15,14 @@ public abstract class Player {
 	private int[] location;
 	protected ArrayList<Card> hand;
 	protected ArrayList<Card> seenCards;
+	private int height;
+	private int width;
 	
 	
 	public Player(String name, String color, int row, int col) {
 		super();
 		this.name = name;
-	
+	 
 		if(color.equals("Blue")) 
 		{
 			this.color=Color.blue;
@@ -37,7 +40,7 @@ public abstract class Player {
 		}
 		if(color.equals("Orange")) 
 		{
-			this.color=Color.orange;
+			this.color=new Color(255,120,10);
 			
 		}
 		if(color.equals("Purple")) 
@@ -45,9 +48,9 @@ public abstract class Player {
 			this.color=Color.magenta;
 			
 		}
-		if(color.equals("Yellow")) 
+		if(color.equals("Brown")) 
 		{
-			this.color=Color.yellow;
+			this.color=new Color(87,65,47);
 			
 		}
 
@@ -60,6 +63,32 @@ public abstract class Player {
 		this.seenCards=new ArrayList<Card>();
 	}
 	
+	
+	public void setWidth(int width) {
+		this.width = width;
+	}
+	
+	public void setHeight(int height) {
+		this.height = height;
+	}
+	
+	
+	public void draw(Graphics graphics) {
+		
+		int size = 0;
+		
+		if(height > width) 											//allows user to move the window
+		{
+			size = width;
+		}
+		else if(width > height) 
+		{
+			size = height;
+		}
+		
+		graphics.setColor(color);													//creates the player circle at the the correct size
+		graphics.fillOval(size * col,size * row,size - size / 5,size - size / 5);
+	}
 	
 	public void updateHand(Card card) {
 		

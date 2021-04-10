@@ -14,7 +14,7 @@ public class ComputerPlayer extends Player {
 	}
 	
 	public Solution createSuggestion(ArrayList<Card> deck, Room room) {
-		
+		 
 		Collections.shuffle(deck);				//shuffling
 		Solution possibleSolution = new Solution();
 		

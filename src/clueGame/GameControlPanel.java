@@ -21,7 +21,7 @@ public class GameControlPanel extends JPanel {
 
 	public GameControlPanel() {
 		setLayout(new GridLayout(2,0));							//created main grid
-		JPanel panel = new JPanel();
+		JPanel panel = new JPanel(); 
 		JPanel panel2=new JPanel();
 		panel = layout1();										//adds to each panel
 		add(panel);
