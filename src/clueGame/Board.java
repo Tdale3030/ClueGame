@@ -1,5 +1,7 @@
 package clueGame;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -13,9 +15,12 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
+import javax.swing.JPanel;
+
 import experiment.TestBoardCell;
 //AUTHORS:Brody Clark and Tyner Dale
-public class Board {
+public class Board extends JPanel {
+	
 	private static Board theInstance = new Board();
 	private int numRows, numColumns;
 	private String layoutConfiFile, setupConfigFile;
@@ -28,13 +33,8 @@ public class Board {
 	private ArrayList<Card> deck;
 	private Solution theAnswer;
 	private ArrayList<Card> usedCards;
-	/*
-	 * variable and methods used for singleton pattern
-	 */
-	// constructor is private to ensure only one can be created
 	
-	
-	private Board() {
+	public Board() {
 		super() ;
 		
 		roomMap = new HashMap<Character, Room>();
@@ -42,7 +42,14 @@ public class Board {
 		this.gridBoard=new BoardCell[numRows][numColumns];
 		
 		boardCreation();
+		
+		setBackground(Color.BLACK);
 
+	}
+	
+	public void paintComponent(Graphics graphics) {
+		
+		repaint();
 	}
 
 	private void boardCreation() {
