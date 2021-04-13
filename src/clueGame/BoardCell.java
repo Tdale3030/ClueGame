@@ -23,7 +23,7 @@ public class BoardCell {
     private int height;
     private int width;
     private boolean flag=false;
-    
+    private int size=0;
     private boolean doorway;
     private char c = ' ';
     HashSet<BoardCell> adjList;
@@ -117,7 +117,7 @@ public class BoardCell {
 	
 	public void draw(Graphics graphics) {
 		
-		int size = 0;
+		
 																	//allows for user to move the window
 		if(height > width) 
 		{
@@ -155,7 +155,7 @@ public class BoardCell {
 	}
 	public void drawDoorway(Graphics graphics) {
 
-		int size = 0;
+		
 		//allows for user to move the window
 		if(height > width) 
 		{
@@ -168,7 +168,7 @@ public class BoardCell {
 		switch(doorDirection){
 
 		case UP:
-			graphics.setColor(Color.BLUE);
+			graphics.setColor(Color.BLUE);												//sets door colors to blue so player can see where to access a room
 			graphics.fillRect(size * col,size * row - size / 5,size,size / 5);
 			break;
 
@@ -191,22 +191,19 @@ public class BoardCell {
 		}
 	}
 	
-	public boolean containsClick(int mouseX,int mouseY,int offsetX,int offsetY,int size) {
+	public boolean containsClick(int mouseX,int mouseY) {
 		
-		int x = (col*size)+offsetX;
-		int y = (row*size)+offsetY;
+		int x = size * col;
+		int y = size * row;
 		
 		Rectangle box = new Rectangle(x,y,size,size);
 		
-		if(box.contains(new Point(mouseX+offsetX,mouseY+offsetY))) {
+		if(box.contains(new Point(mouseX,mouseY))) {
 			return true;
 			
 		}else {
 			return false;
 		}
-		
-		
-		
 	}
 
 

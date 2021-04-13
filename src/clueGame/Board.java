@@ -3,6 +3,7 @@ package clueGame;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -17,11 +18,13 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import experiment.TestBoardCell;
 //AUTHORS:Brody Clark and Tyner Dale
-public class Board extends JPanel {
+public class Board extends JPanel implements MouseListener{
 	
 	private static Board theInstance = new Board();
 	private int numRows, numColumns;
@@ -54,11 +57,11 @@ public class Board extends JPanel {
 	}
 	
 	public int roll() {
-		
+																		//finds a random number between 1 and 6 for the roll
 		Random rand = new Random();
 		int randomNum = rand.nextInt( (6 - 1) + 1 ) + 1;
 		
-		return randomNum;
+		return randomNum;												//returns the random number
 	}
 	
 	public void paintComponent(Graphics graphics) {
@@ -798,44 +801,113 @@ public class Board extends JPanel {
 	
 	public void playing() {
 
-		if(playerTurn == 0) 
+		if(playerTurn == 0) 																		//if human player
 		{
 			pathTargets=null;
-			startCell = getCell((players.get(0).getRow()),(players.get(0).getCol()));
+			startCell = getCell((players.get(0).getRow()),(players.get(0).getCol()));				//gets all information to find player and locations
 			calcTargets(startCell,pathlength);
 			
-			for(int i=0;i<numRows;i++) 
+			for(int i=0;i<numRows;i++) 																//nested loop to see where at in grid
 			{
 				for(int j=0;j<numColumns;j++) 
 				{
-					if(pathTargets.contains(gridBoard[i][j])) 
+					if(pathTargets.contains(gridBoard[i][j])) 										//finds if the grid location is a valid space
 					{
-						gridBoard[i][j].setFlag(true);
+						gridBoard[i][j].setFlag(true);												//valid move spaces for player
 				
 					}else {
-						gridBoard[i][j].setFlag(false);
+						gridBoard[i][j].setFlag(false);												//not a valid place for user to click
 					}
 				}
 			}
+			addMouseListener(this);
+			
 
-		}else {
-			for(int i=0;i<numRows;i++) 
-			{
+		}else {																						//if not a human player
+			for(int i=0;i<numRows;i++) 												
+			{																						//nested loop to see where on grid
 				for(int j=0;j<numColumns;j++) 
 				{
-					gridBoard[i][j].setFlag(false);
+					gridBoard[i][j].setFlag(false);													//if not a flag, then repaint so user can't click
 					repaint();
 				}
 			}
-			calcTargets(gridBoard[players.get(playerTurn).getRow()][players.get(playerTurn).getCol()], roll());
+			
+			calcTargets(gridBoard[players.get(playerTurn).getRow()][players.get(playerTurn).getCol()], roll());					//creates the computer player to move
 			BoardCell Location = players.get(playerTurn).selectTargets(pathTargets);
 			players.get(playerTurn).setRow(Location.getRow());
 			players.get(playerTurn).setCol(Location.getCol());
+			
 		}
+
+	}
+
+	public Set<BoardCell> getPathTargets() {
+		return pathTargets;
+	}
+	
+	public void mouseClicked(MouseEvent e) {
+		
+	}
+	public void mouseEntered(MouseEvent e) {
+		
+	}
+	public void mouseExited(MouseEvent e) {
+		
+	}
+	public void mouseReleased(MouseEvent e) {
+		
+	}
+	public void mousePressed(MouseEvent e) {
+		int size = 0;
+		//allows for user to move the window
+		if(getHeight() > getWidth()) 
+		{
+			size = getWidth();
+		}
+		
+		else if(getWidth() > getHeight()) 
+		{
+			size = getHeight();
+		}
+		
+		
+		
+		BoardCell target=null;
+		
+		
+		for(int i=0;i<numRows;i++) 
+		{
+			for(int j=0;j<numColumns;j++) 
+			{
+				if(gridBoard[i][j].containsClick(e.getX(),e.getY()))
+				{
+					target=gridBoard[i][j];
+
+					if(target!=null)
+					{
+						break;
+					}
+				}
+			}
+		
+			
+		}
+		if(pathTargets.contains(target)) 
+		{
+			players.get(playerTurn).setRow(target.getRow());
+			players.get(playerTurn).setCol(target.getCol());
+			
+		}else {
+			JOptionPane.showMessageDialog(null, "Not a valid move", "Error Message", JOptionPane.ERROR_MESSAGE);
+		}
+		
+		
+	}
 	}
 	
 	
-}
+
 
 
 	

@@ -37,26 +37,26 @@ public class GameControlPanel extends JPanel {
 		add(panel);
 		panel2 = layout2();
 		add(panel2);
-		roll=board.roll();
+		roll=board.roll();										//rolls dice
 		board.setPathlength(roll);
-		setTurn(board.getPlayerList().get(board.getPlayerTurn()),roll);
+		setTurn(board.getPlayerList().get(board.getPlayerTurn()),roll);  //sets the players turn
 		board.playing();
 		
 		
 		buttonNext.addActionListener(new ActionListener() 
 		{
-	        public void actionPerformed(ActionEvent e) 
+	        public void actionPerformed(ActionEvent e) 	//button is pressed
 	        {
-	        	board.setPlayerTurn(board.getPlayerTurn()+1);
+	        	board.setPlayerTurn(board.getPlayerTurn()+1); // sets turn to next player
 	        	
-	        	if(board.getPlayerTurn()==6) 
+	        	if(board.getPlayerTurn()==6) //goes back to beginning of play list
 	        	{
 	        		board.setPlayerTurn(0);
 	        	}
 	        	
 	        	roll=board.roll();
-	        	board.setPathlength(roll);
-	        	board.playing();
+	        	board.setPathlength(roll);		//sets pathlength to number rolled
+	        	board.playing();				//plays turn								
 	        	setTurn(board.getPlayerList().get(board.getPlayerTurn()),roll);
 	        	
 	        }
@@ -114,8 +114,6 @@ public class GameControlPanel extends JPanel {
 		return mainPanel2;											//returns whole panel
 	}
 	
-	
-
 	private void setTurn(Player player, int rollNumber) {
 		this.roll2.setText(Integer.toString(rollNumber));
 		this.whoseTurn2.setText(player.getName());
