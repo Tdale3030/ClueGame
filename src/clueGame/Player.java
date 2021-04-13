@@ -87,7 +87,7 @@ public abstract class Player {
 		}
 		
 		graphics.setColor(color);													//creates the player circle at the the correct size
-		graphics.fillOval(size * col,size * row,size - size / 5,size - size / 5);
+		graphics.fillOval(size * col+2,size * row+2,size - size / 5,size - size / 5);
 	}
 	
 	public void updateHand(Card card) {

@@ -1,3 +1,9 @@
+commit 84ef199eda1758facf9f9b36cd0bdd7081a8591c
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Fri Apr 9 22:30:00 2021 -0600
+
+    finished
+
 commit 2f6e02bf69a4a6bbf8cd202092bdbf0b521e084e
 Author: brodyclark <brodyclark@mymail.mines.edu>
 Date:   Fri Apr 9 20:10:23 2021 -0600
