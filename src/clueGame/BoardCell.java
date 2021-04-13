@@ -2,6 +2,8 @@ package clueGame;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -147,6 +149,7 @@ public class BoardCell {
 			{
 				graphics.fillRect(size * col + size / 10,size * row + size / 10,size - size / 5,size - size / 5);
 			}
+			
 		}
 
 	}
@@ -186,6 +189,24 @@ public class BoardCell {
 
 		default:
 		}
+	}
+	
+	public boolean containsClick(int mouseX,int mouseY,int offsetX,int offsetY,int size) {
+		
+		int x = (col*size)+offsetX;
+		int y = (row*size)+offsetY;
+		
+		Rectangle box = new Rectangle(x,y,size,size);
+		
+		if(box.contains(new Point(mouseX+offsetX,mouseY+offsetY))) {
+			return true;
+			
+		}else {
+			return false;
+		}
+		
+		
+		
 	}
 
 

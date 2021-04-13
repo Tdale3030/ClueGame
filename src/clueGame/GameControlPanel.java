@@ -48,14 +48,17 @@ public class GameControlPanel extends JPanel {
 	        public void actionPerformed(ActionEvent e) 
 	        {
 	        	board.setPlayerTurn(board.getPlayerTurn()+1);
+	        	
 	        	if(board.getPlayerTurn()==6) 
 	        	{
 	        		board.setPlayerTurn(0);
-	        		
-	        		
 	        	}
-	        	setTurn(board.getPlayerList().get(board.getPlayerTurn()),board.roll());
+	        	
+	        	roll=board.roll();
+	        	board.setPathlength(roll);
 	        	board.playing();
+	        	setTurn(board.getPlayerList().get(board.getPlayerTurn()),roll);
+	        	
 	        }
 	    });
 	}

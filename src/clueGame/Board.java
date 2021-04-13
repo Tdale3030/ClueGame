@@ -2,6 +2,7 @@ package clueGame;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -756,14 +757,12 @@ public class Board extends JPanel {
 		
 		for(int i=0;i<players.size();i++) //loops through players list and finds the player 
 		{
-			if(players.get(i).getName().equals(player)) {
+			if(players.get(i).getName().equals(player)) 
+			{
 				return players.get(i);
 			}
-			
-		}
-		
+		}	
 		return null;
-		
 	}
 
 	public ArrayList<Card> getUsedCards() {
@@ -798,9 +797,7 @@ public class Board extends JPanel {
 	}
 	
 	public void playing() {
-		
-		
-		
+
 		if(playerTurn == 0) 
 		{
 			pathTargets=null;
@@ -820,14 +817,35 @@ public class Board extends JPanel {
 					}
 				}
 			}
-			
+
+		}else {
+			for(int i=0;i<numRows;i++) 
+			{
+				for(int j=0;j<numColumns;j++) 
+				{
+					gridBoard[i][j].setFlag(false);
+					repaint();
+				}
+			}
+			calcTargets(gridBoard[players.get(playerTurn).getRow()][players.get(playerTurn).getCol()], roll());
+			BoardCell Location = players.get(playerTurn).selectTargets(pathTargets);
+			players.get(playerTurn).setRow(Location.getRow());
+			players.get(playerTurn).setCol(Location.getCol());
 		}
-		
-		
-		
-		
-		
-		
 	}
 	
+	
 }
+
+
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+

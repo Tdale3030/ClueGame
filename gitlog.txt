@@ -1,3 +1,9 @@
+commit 429efaa2d41e6467589ca3c6f06c13167f5aeaed
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Mon Apr 12 21:55:07 2021 -0600
+
+    almost done with next button
+
 commit 8970c6853765d53007d4882428ac8b618cb34d02
 Author: brodyclark <brodyclark@mymail.mines.edu>
 Date:   Mon Apr 12 20:24:56 2021 -0600
