@@ -2,6 +2,8 @@ package clueGame;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,6 +20,7 @@ public class GameControlPanel extends JPanel {
 	private JTextField whoseTurn2;
 	private JLabel guess;
 	private JLabel guessResult;
+	private JButton buttonNext = new JButton("Next");
 
 	public GameControlPanel() {
 		setLayout(new GridLayout(2,0));							//created main grid
@@ -27,6 +30,15 @@ public class GameControlPanel extends JPanel {
 		add(panel);
 		panel2 = layout2();
 		add(panel2);
+		
+		buttonNext.addActionListener(new ActionListener() 
+		{
+	        public void actionPerformed(ActionEvent e) {
+	        	
+	        	System.out.print("next pressed");
+
+	        }
+	    });
 	}
 
 	private JPanel layout1() {
@@ -54,7 +66,7 @@ public class GameControlPanel extends JPanel {
 		JButton buttonAccousation = new JButton("Make Accousation");		//creates first button
 		mainPanel.add(buttonAccousation);
 		
-		JButton buttonNext = new JButton("Next");							//creates second button
+		buttonNext = new JButton("Next");							//creates second button
 		mainPanel.add(buttonNext);
 		
 		return mainPanel;				

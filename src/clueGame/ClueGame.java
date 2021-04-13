@@ -7,6 +7,7 @@ import java.awt.Graphics;
 import java.io.FileNotFoundException;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.RootPaneContainer;
 
@@ -22,7 +23,7 @@ public class ClueGame extends JFrame {
 		board.setConfigFiles("data/ClueLayout.csv", "data/ClueSetup.txt");		
 		// Initialize will load config files 
 		board.initialize();
-		
+		JOptionPane.showMessageDialog(null, "         You are Anakin.\n  Can you find the solution \nbefore the Computer players?", "Welcome to Clue", JOptionPane.INFORMATION_MESSAGE);
 		setSize(new Dimension(1100,1000)); // size the frame
 		Player player = new ComputerPlayer("Boba","Green",5,0);					//computer players
 		JPanel east = new clueCardsGUI(player);
@@ -42,6 +43,7 @@ public class ClueGame extends JFrame {
 		ClueGame frame = new ClueGame();  // create the panel
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		frame.setVisible(true); // make it visible
+		
 
 	}
 	

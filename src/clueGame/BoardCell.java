@@ -204,9 +204,5 @@ public class BoardCell {
 		return col;
 	}
 
-	
-	
-	
-	
 
 }
