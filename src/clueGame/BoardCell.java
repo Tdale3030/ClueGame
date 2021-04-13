@@ -20,6 +20,7 @@ public class BoardCell {
     private Color color;
     private int height;
     private int width;
+    private boolean flag=false;
     
     private boolean doorway;
     private char c = ' ';
@@ -131,14 +132,22 @@ public class BoardCell {
 			graphics.fillRect(size * col + size / 10,size * row + size / 10,size - size / 5,size - size / 5);			//creates correct size
 				
 		}
-		else if (initial == 'Z') {									//if a black space, do nothing
-		}	
-		else														//else paint it black
+		else if (initial == 'Z') 
+		{									//if a black space, do nothing
+		}	else														//else paint it black
 		{
 			graphics.setColor(Color.GRAY);
 			graphics.fillRect(size * col,size * row,size,size);											//creates the correct size
 		}
-
+		if(flag)
+		{
+			graphics.setColor(Color.CYAN);
+			
+			if(initial=='W') 
+			{
+				graphics.fillRect(size * col + size / 10,size * row + size / 10,size - size / 5,size - size / 5);
+			}
+		}
 
 	}
 	public void drawDoorway(Graphics graphics) {
@@ -203,6 +212,17 @@ public class BoardCell {
 	public int getCol() {
 		return col;
 	}
+
+	public boolean isFlag() {
+		return flag;
+	}
+
+	public void setFlag(boolean flag) {
+		this.flag = flag;
+	}
+		
+		
+	
 
 
 }

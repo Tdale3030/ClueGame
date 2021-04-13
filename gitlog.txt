@@ -1,3 +1,15 @@
+commit 8970c6853765d53007d4882428ac8b618cb34d02
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Mon Apr 12 20:24:56 2021 -0600
+
+    opening window and button working
+
+commit b5667e36b812e919ceb60fee095d781236126174
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Mon Apr 12 19:53:39 2021 -0600
+
+    fixing any bugs
+
 commit 84ef199eda1758facf9f9b36cd0bdd7081a8591c
 Author: brodyclark <brodyclark@mymail.mines.edu>
 Date:   Fri Apr 9 22:30:00 2021 -0600

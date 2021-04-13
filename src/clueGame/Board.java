@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -29,10 +30,14 @@ public class Board extends JPanel {
 	Set<BoardCell> adjList;
 	private Set<BoardCell> pathTargets;
 	private Set<BoardCell> visited;
-	private ArrayList<Player> players;
+	private static ArrayList<Player> players;
 	private ArrayList<Card> deck;
 	private Solution theAnswer;
 	private ArrayList<Card> usedCards;
+	private int playerTurn=0;
+	private int pathlength;
+	private BoardCell startCell;
+	
 	
 	public Board() {
 		super() ;
@@ -45,6 +50,14 @@ public class Board extends JPanel {
 		
 		setBackground(Color.BLACK);										//sets background to black twice
 
+	}
+	
+	public int roll() {
+		
+		Random rand = new Random();
+		int randomNum = rand.nextInt( (6 - 1) + 1 ) + 1;
+		
+		return randomNum;
 	}
 	
 	public void paintComponent(Graphics graphics) {
@@ -685,10 +698,7 @@ public class Board extends JPanel {
 					break;
 				}
 			}
-			
-			
 		}
-	
 	}
 	
 	public boolean checkAccusation(Solution solution) {					//checking to see if answer and solution match
@@ -734,7 +744,7 @@ public class Board extends JPanel {
 		return deck;
 	}
 	
-	public ArrayList<Player> getPlayerList() {
+	public static ArrayList<Player> getPlayerList() {
 		return players;
 		
 	}
@@ -773,6 +783,51 @@ public class Board extends JPanel {
 		
 		return null;
 	}
+	public int getPlayerTurn() {
+		return playerTurn;
+	}
+
+	public void setPlayerTurn(int playerTurn) {
+		this.playerTurn = playerTurn;
+	}
+
+	public void setPathlength(int roll) {
+		// TODO Auto-generated method stub
+		this.pathlength=roll;
+		
+	}
 	
+	public void playing() {
+		
+		
+		
+		if(playerTurn == 0) 
+		{
+			pathTargets=null;
+			startCell = getCell((players.get(0).getRow()),(players.get(0).getCol()));
+			calcTargets(startCell,pathlength);
+			
+			for(int i=0;i<numRows;i++) 
+			{
+				for(int j=0;j<numColumns;j++) 
+				{
+					if(pathTargets.contains(gridBoard[i][j])) 
+					{
+						gridBoard[i][j].setFlag(true);
+				
+					}else {
+						gridBoard[i][j].setFlag(false);
+					}
+				}
+			}
+			
+		}
+		
+		
+		
+		
+		
+		
+	}
 	
 }

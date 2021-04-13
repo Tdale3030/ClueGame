@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,8 +23,13 @@ public class GameControlPanel extends JPanel {
 	private JLabel guess;
 	private JLabel guessResult;
 	private JButton buttonNext = new JButton("Next");
+	private int roll;
+	
+	
+	
 
-	public GameControlPanel() {
+	public GameControlPanel(Board board) {
+		
 		setLayout(new GridLayout(2,0));							//created main grid
 		JPanel panel = new JPanel(); 
 		JPanel panel2=new JPanel();
@@ -30,13 +37,25 @@ public class GameControlPanel extends JPanel {
 		add(panel);
 		panel2 = layout2();
 		add(panel2);
+		roll=board.roll();
+		board.setPathlength(roll);
+		setTurn(board.getPlayerList().get(board.getPlayerTurn()),roll);
+		board.playing();
+		
 		
 		buttonNext.addActionListener(new ActionListener() 
 		{
-	        public void actionPerformed(ActionEvent e) {
-	        	
-	        	System.out.print("next pressed");
-
+	        public void actionPerformed(ActionEvent e) 
+	        {
+	        	board.setPlayerTurn(board.getPlayerTurn()+1);
+	        	if(board.getPlayerTurn()==6) 
+	        	{
+	        		board.setPlayerTurn(0);
+	        		
+	        		
+	        	}
+	        	setTurn(board.getPlayerList().get(board.getPlayerTurn()),board.roll());
+	        	board.playing();
 	        }
 	    });
 	}
@@ -92,19 +111,7 @@ public class GameControlPanel extends JPanel {
 		return mainPanel2;											//returns whole panel
 	}
 	
-	public static void main(String[] args) {
-		GameControlPanel panel = new GameControlPanel();  // create the panel
-		JFrame frame = new JFrame();  // create the frame 
-		frame.setContentPane(panel); // put the panel in the frame
-		frame.setSize(750, 180);  // size the frame
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
-		frame.setVisible(true); // make it visible
-		
-		//test filling in the data
-		panel.setTurn(new ComputerPlayer( "Boba", "Green", 0, 0), 6);
-		panel.setGuess( "I have no guess!");
-		panel.setGuessResult( "So you have nothing?");
-	}
+	
 
 	private void setTurn(Player player, int rollNumber) {
 		this.roll2.setText(Integer.toString(rollNumber));
