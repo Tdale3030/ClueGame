@@ -43,6 +43,7 @@ public class Board extends JPanel implements MouseListener{
 	private BoardCell startCell;
 	
 	
+	
 	public Board() {
 		super() ;
 		
@@ -138,6 +139,7 @@ public class Board extends JPanel implements MouseListener{
 		initializeTryCatch();
 		allAdj();
 		deal();
+		addMouseListener(this);
 																		//refactoring
 	}
 	
@@ -820,7 +822,7 @@ public class Board extends JPanel implements MouseListener{
 					}
 				}
 			}
-			addMouseListener(this);
+			
 			
 
 		}else {																						//if not a human player
@@ -876,6 +878,7 @@ public class Board extends JPanel implements MouseListener{
 		BoardCell target=null;
 		
 		
+		
 		for(int i=0;i<numRows;i++) 
 		{
 			for(int j=0;j<numColumns;j++) 
@@ -883,7 +886,12 @@ public class Board extends JPanel implements MouseListener{
 				if(gridBoard[i][j].containsClick(e.getX(),e.getY()))
 				{
 					target=gridBoard[i][j];
-
+					
+					if (gridBoard[i][j].getInitial()!='W') {
+						
+						target=(roomMap.get(gridBoard[i][j].getInitial())).getCenterCell();
+						
+					}
 					if(target!=null)
 					{
 						break;
@@ -899,11 +907,14 @@ public class Board extends JPanel implements MouseListener{
 			players.get(playerTurn).setCol(target.getCol());
 			
 		}else {
+			
 			JOptionPane.showMessageDialog(null, "Not a valid move", "Error Message", JOptionPane.ERROR_MESSAGE);
 		}
 		
 		
 	}
+	
+	
 	}
 	
 	
@@ -914,10 +925,3 @@ public class Board extends JPanel implements MouseListener{
 	
 	
 	
-	
-
-	
-	
-	
-	
-
