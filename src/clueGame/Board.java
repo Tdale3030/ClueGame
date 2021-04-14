@@ -22,6 +22,12 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import com.sun.tools.javac.Main;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
 import experiment.TestBoardCell;
 //AUTHORS:Brody Clark and Tyner Dale
 public class Board extends JPanel implements MouseListener{
@@ -41,7 +47,7 @@ public class Board extends JPanel implements MouseListener{
 	private int playerTurn=0;
 	private int pathlength;
 	private BoardCell startCell;
-	
+	private String filePath;
 	
 	
 	public Board() {
@@ -140,6 +146,23 @@ public class Board extends JPanel implements MouseListener{
 		allAdj();
 		deal();
 		addMouseListener(this);
+		
+		try
+		    {
+		        filePath = "data/starwars.wav";
+		        SimpleAudioPlayer audioPlayer = 
+		                        new SimpleAudioPlayer(filePath);
+		          
+		        audioPlayer.play();
+		       
+		    } 
+		      
+		    catch (Exception ex) 
+		    {
+		        System.out.println("Error with playing sound.");
+		        ex.printStackTrace();
+		      
+		      }
 																		//refactoring
 	}
 	
@@ -915,13 +938,7 @@ public class Board extends JPanel implements MouseListener{
 	}
 	
 	
-	}
 	
-	
-
-
-
-	
-	
+}
 	
 	
