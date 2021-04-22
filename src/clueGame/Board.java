@@ -60,8 +60,6 @@ public class Board extends JPanel implements MouseListener{
 		boardCreation();
 		
 		setBackground(Color.BLACK);										//sets background to black twice
-		
-		
 
 	}
 	
@@ -152,7 +150,8 @@ public class Board extends JPanel implements MouseListener{
 		try
 		    {
 		        filePath = "data/starwars.wav";
-		        SimpleAudioPlayer audioPlayer = new SimpleAudioPlayer(filePath);
+		        SimpleAudioPlayer audioPlayer = 
+		                        new SimpleAudioPlayer(filePath);
 		          
 		        audioPlayer.play();
 		       
@@ -846,7 +845,7 @@ public class Board extends JPanel implements MouseListener{
 					}
 				}
 			}
-			addMouseListener(this);
+			
 			
 
 		}else {																						//if not a human player
@@ -902,6 +901,7 @@ public class Board extends JPanel implements MouseListener{
 		BoardCell target=null;
 		
 		
+		
 		for(int i=0;i<numRows;i++) 
 		{
 			for(int j=0;j<numColumns;j++) 
@@ -909,7 +909,12 @@ public class Board extends JPanel implements MouseListener{
 				if(gridBoard[i][j].containsClick(e.getX(),e.getY()))
 				{
 					target=gridBoard[i][j];
-
+					
+					if (gridBoard[i][j].getInitial()!='W') {
+						
+						target=(roomMap.get(gridBoard[i][j].getInitial())).getCenterCell();
+						
+					}
 					if(target!=null)
 					{
 						break;
@@ -925,10 +930,14 @@ public class Board extends JPanel implements MouseListener{
 			players.get(playerTurn).setCol(target.getCol());
 			
 		}else {
+			
 			JOptionPane.showMessageDialog(null, "Not a valid move", "Error Message", JOptionPane.ERROR_MESSAGE);
 		}
-	}
+		
+		
 	}
 	
 	
+	
+}
 
