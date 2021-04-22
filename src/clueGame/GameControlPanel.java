@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
@@ -47,6 +48,13 @@ public class GameControlPanel extends JPanel {
 		{
 	        public void actionPerformed(ActionEvent e) 	//button is pressed
 	        {
+	        	if(Board.isMoved() == false) 
+	        	{
+	        		
+	        		JOptionPane.showMessageDialog(null, "Move your Character \n", "Error", JOptionPane.INFORMATION_MESSAGE);
+	        		return;
+	        	}
+	        	
 	        	board.setPlayerTurn(board.getPlayerTurn()+1); // sets turn to next player
 	        	
 	        	if(board.getPlayerTurn()==6) //goes back to beginning of play list

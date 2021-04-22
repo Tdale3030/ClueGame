@@ -116,8 +116,6 @@ public class BoardCell {
     }
 	
 	public void draw(Graphics graphics) {
-		
-		
 																	//allows for user to move the window
 		if(height > width) 
 		{
@@ -136,7 +134,12 @@ public class BoardCell {
 		}
 		else if (initial == 'Z') 
 		{									//if a black space, do nothing
-		}	else														//else paint it black
+		}else if('G'==getSecretPassage() || 'B'==getSecretPassage() || 'L'==getSecretPassage() || 'C'==getSecretPassage()) {
+			graphics.setColor(Color.DARK_GRAY);
+			graphics.fillRect(size * col + size / 10,size * row + size / 10,size - size / 5,size - size / 5);			//creates correct size
+				
+		}
+			else														//else paint it black
 		{
 			graphics.setColor(Color.GRAY);
 			graphics.fillRect(size * col,size * row,size,size);											//creates the correct size
@@ -145,10 +148,13 @@ public class BoardCell {
 		{
 			graphics.setColor(Color.CYAN);
 			
-			if(initial=='W') 
+			if(initial=='Z') 
 			{
-				graphics.fillRect(size * col + size / 10,size * row + size / 10,size - size / 5,size - size / 5);
+				return;
 			}
+			
+			graphics.fillRect(size * col + size / 10,size * row + size / 10,size - size / 5,size - size / 5);			//creates correct size
+			
 			
 		}
 

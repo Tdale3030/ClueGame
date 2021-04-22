@@ -1,3 +1,54 @@
+commit 10d0d35411da04e7d939a511289d5ae3e31821c2
+Merge: 50cfef5 be00ab8
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Thu Apr 22 14:24:39 2021 -0600
+
+    sounds, fixing board
+
+commit 50cfef52282ec1689f40d1c306613a5b20ad1108
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Thu Apr 22 14:23:59 2021 -0600
+
+    sounds and board bugs
+
+commit 341ded947a493b2dea535f7499767594d037af8e
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Thu Apr 22 14:23:12 2021 -0600
+
+    sound, and board bugs fixed
+
+commit 59f58e4b847984410415f0c2e5aca3fc99f71e9a
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Thu Apr 22 14:20:53 2021 -0600
+
+    Playing Sound
+
+commit a881e4f0ed2fd44b52d4cf051b17680ea7c7e891
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Thu Apr 22 13:56:05 2021 -0600
+
+    Getting ready for final steps
+
+commit be00ab80d1f327c9eba01e9ffed800f65779f33e
+Author: Tyner Dale <57678688+Tdale3030@users.noreply.github.com>
+Date:   Tue Apr 13 22:28:48 2021 -0600
+
+    Updated board to play sound
+
+commit a56ea57162cca05b7072e42972700d666841bb58
+Author: Tyner Dale <57678688+Tdale3030@users.noreply.github.com>
+Date:   Tue Apr 13 22:27:35 2021 -0600
+
+    Created AudioClass
+    
+    Plays Music
+
+commit 33129f00c1f0410cd6c67b615b9858bb068697d3
+Author: Tyner Dale <57678688+Tdale3030@users.noreply.github.com>
+Date:   Tue Apr 13 17:49:16 2021 -0600
+
+    Fixed rooms and number of error messages
+
 commit 670bdee6ad9ed0ca7254b35671c5a558872aa5d8
 Author: brodyclark <brodyclark@mymail.mines.edu>
 Date:   Mon Apr 12 23:54:27 2021 -0600

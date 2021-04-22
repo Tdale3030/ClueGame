@@ -47,10 +47,7 @@ public class ClueGame extends JFrame {
 		ClueGame frame = new ClueGame();  // create the panel
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		frame.setVisible(true); // make it visible
+		Suggestion sug = new Suggestion(frame,"Suggestion",true);
 		
-
 	}
-
-	
-	
 }

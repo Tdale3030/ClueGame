@@ -17,6 +17,8 @@ public abstract class Player {
 	protected ArrayList<Card> seenCards;
 	private int height;
 	private int width;
+	private boolean inRoom = false;
+	private int pos;
 	
 	
 	public Player(String name, String color, int row, int col) {
@@ -72,6 +74,13 @@ public abstract class Player {
 		this.height = height;
 	}
 	
+	public void setInRoom(boolean inRoom) {
+		this.inRoom = inRoom;
+	}
+	
+	public void setPos(int Pos) {
+		this.pos = Pos;
+	}
 	
 	public void draw(Graphics graphics) {
 		
@@ -85,9 +94,15 @@ public abstract class Player {
 		{
 			size = height;
 		}
-		
-		graphics.setColor(color);													//creates the player circle at the the correct size
-		graphics.fillOval(size * col+2,size * row+2,size - size / 5,size - size / 5);
+		if (inRoom) {
+			graphics.setColor(color);													//creates the player circle at the the correct size
+			graphics.fillOval(size * col+2 + (10 * pos),size * row+2,size - size / 5,size - size / 5);
+		}
+		else {
+			graphics.setColor(color);													//creates the player circle at the the correct size
+			graphics.fillOval(size * col+2,size * row+2,size - size / 5,size - size / 5);
+		}
+	
 	}
 	
 	public void updateHand(Card card) {
