@@ -901,23 +901,8 @@ public class Board extends JPanel implements MouseListener{
 		}else {
 			JOptionPane.showMessageDialog(null, "Not a valid move", "Error Message", JOptionPane.ERROR_MESSAGE);
 		}
-		
-		
 	}
 	}
-	
-	
-
-
-
-	
-	
-	
-	
-	
-
-	
-	
 	
 	
 

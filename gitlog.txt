@@ -1,3 +1,9 @@
+commit 670bdee6ad9ed0ca7254b35671c5a558872aa5d8
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Mon Apr 12 23:54:27 2021 -0600
+
+    Done but bugs
+
 commit 4bdce7646b63667bdbd2a29132122202ee7c1fae
 Author: brodyclark <brodyclark@mymail.mines.edu>
 Date:   Mon Apr 12 22:57:03 2021 -0600
