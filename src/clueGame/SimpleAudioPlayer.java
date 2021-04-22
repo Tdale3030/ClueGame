@@ -50,4 +50,8 @@ public class SimpleAudioPlayer
     
   
     
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> be00ab80d1f327c9eba01e9ffed800f65779f33e
