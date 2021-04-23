@@ -19,6 +19,7 @@ public abstract class Player {
 	private int width;
 	private boolean inRoom = false;
 	private int pos;
+	private Room room;
 	
 	
 	public Player(String name, String color, int row, int col) {
@@ -144,6 +145,14 @@ public abstract class Player {
 		
 		return location;
 		
+	}
+	
+	public void setRoom(Room room) {
+		this.room = room;
+	}
+	
+	public Room getRoom() {
+		return room;
 	}
 
 	public ArrayList<Card> getHand(){

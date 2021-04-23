@@ -19,6 +19,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -41,7 +42,7 @@ public class Board extends JPanel implements MouseListener{
 	private Set<BoardCell> pathTargets;
 	private Set<BoardCell> visited;
 	private static ArrayList<Player> players;
-	private ArrayList<Card> deck;
+	private static ArrayList<Card> deck;
 	private Solution theAnswer;
 	private ArrayList<Card> usedCards;
 	private int playerTurn=0;
@@ -49,6 +50,7 @@ public class Board extends JPanel implements MouseListener{
 	private BoardCell startCell;
 	private String filePath;
 	private static boolean moved;
+	private JDialog suggestion;
 
 
 	public Board() {
@@ -152,7 +154,7 @@ public class Board extends JPanel implements MouseListener{
 		allAdj();
 		deal();
 		addMouseListener(this);
-		
+		/*
 		try
 		{
 			filePath = "data/starwars.wav";
@@ -168,7 +170,7 @@ public class Board extends JPanel implements MouseListener{
 			System.out.println("Error with playing sound.");
 			ex.printStackTrace();
 
-		}
+		}*/
 		//refactoring
 	}
 
@@ -774,7 +776,7 @@ public class Board extends JPanel implements MouseListener{
 	}
 
 
-	public ArrayList<Card> getDeck() {
+	public static ArrayList<Card> getDeck() {
 
 		return deck;
 	}
@@ -945,7 +947,9 @@ public class Board extends JPanel implements MouseListener{
 
 						target=(roomMap.get(gridBoard[i][j].getInitial())).getCenterCell();
 						players.get(playerTurn).setInRoom(true);
-					
+						players.get(playerTurn).setRoom(roomMap.get(gridBoard[i][j].getInitial()));
+						suggestion = new Suggestion(this);
+						suggestion.setVisible(true);
 					}
 					
 					if(target!=null)

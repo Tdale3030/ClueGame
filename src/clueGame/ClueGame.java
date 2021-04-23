@@ -7,6 +7,7 @@ import java.awt.Graphics;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -15,7 +16,8 @@ import javax.swing.RootPaneContainer;
 public class ClueGame extends JFrame {
 	
 	private static Board board;
-	private ArrayList<Player> players;
+	private static ArrayList<Player> players;
+	
 	
 	
 	public ClueGame() throws FileNotFoundException, BadConfigFormatException {
@@ -45,9 +47,16 @@ public class ClueGame extends JFrame {
 	public static void main(String[] args) throws FileNotFoundException, BadConfigFormatException {
 		
 		ClueGame frame = new ClueGame();  // create the panel
+	
+		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		frame.setVisible(true); // make it visible
-		Suggestion sug = new Suggestion(frame,"Suggestion",true);
 		
+		
+	
 	}
+
+	
+	
+	
 }
