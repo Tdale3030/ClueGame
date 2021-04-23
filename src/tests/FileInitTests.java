@@ -44,10 +44,10 @@ public class FileInitTests {
 	public void testRoomLabels() {
 		// To ensure data is correctly loaded, test retrieving a few rooms
 		// from the hash, including the first and last in the file and a few others
-		assertEquals("Church", board.getRoom('C').getName() );
-		assertEquals("Bedroom", board.getRoom('B').getName() );
-		assertEquals("Pool", board.getRoom('P').getName() );
-		assertEquals("Dining", board.getRoom('D').getName() );
+		assertEquals("Coruscant", board.getRoom('C').getName() );
+		assertEquals("Mandalore", board.getRoom('B').getName() );
+		assertEquals("Hoth", board.getRoom('P').getName() );
+		assertEquals("Dagobah", board.getRoom('D').getName() );
 		assertEquals("Walkway", board.getRoom('W').getName() );
 	}
 
@@ -102,30 +102,30 @@ public class FileInitTests {
 		BoardCell cell = board.getCell( 2, 10);
 		Room room = board.getRoom( cell ) ;
 		assertTrue( room != null );
-		assertEquals( room.getName(), "Kitchen" ) ;
-		assertFalse( cell.isLabel() );
-		assertTrue( cell.isRoomCenter() ) ;
+		assertEquals( room.getName(), "Kashyyyk" ) ;
+		assertTrue( cell.isLabel() );
+		assertFalse( cell.isRoomCenter() ) ;
 		assertFalse( cell.isDoorway()) ;
 
 		// this is a label cell to test
 		cell = board.getCell(18, 11);
 		room = board.getRoom( cell ) ;
 		assertTrue( room != null );
-		assertEquals( room.getName(), "Gameroom" ) ;
-		assertFalse( cell.isLabel() );
-		assertFalse( room.getLabelCell() == cell );
+		assertEquals( room.getName(), "Naboo" ) ;
+		assertTrue( cell.isLabel() );
+		assertTrue( room.getLabelCell() == cell );
 		
 		// this is a room center cell to test
 		cell = board.getCell(12,25 );
 		room = board.getRoom( cell ) ;
 		assertTrue( room != null );
-		assertEquals( room.getName(), "Bedroom" ) ;
+		assertEquals( room.getName(), "Mandalore" ) ;
 		assertTrue( cell.getSecretPassage() == 'L' );
 		// this is a secret passage test
 		cell = board.getCell(16, 0);
 		room = board.getRoom( cell ) ;
 		assertTrue( room != null );
-		assertEquals( room.getName(), "Lounge" ) ;
+		assertEquals( room.getName(), "Endor" ) ;
 		assertTrue( cell.getSecretPassage() == 'B' );
 		
 		// test a walkway

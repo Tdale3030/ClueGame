@@ -80,7 +80,6 @@ class ComputerAITest {
 		
 		Solution computerSolution = player.createSuggestion(board.getDeck(), room);
 		assertTrue(computerSolution.getPerson() != null);
-		assertTrue(computerSolution.getRoom() != null);
 		assertTrue(computerSolution.getWeapon() != null);
 	}
 	

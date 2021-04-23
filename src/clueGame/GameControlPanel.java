@@ -8,6 +8,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -24,6 +25,8 @@ public class GameControlPanel extends JPanel {
 	private JLabel guess;
 	private JLabel guessResult;
 	private JButton buttonNext = new JButton("Next");
+	private JButton buttonAccousation = new JButton("Accousation");
+	private JDialog accousation;
 	private int roll;
 	
 	
@@ -42,6 +45,15 @@ public class GameControlPanel extends JPanel {
 		board.setPathlength(roll);
 		setTurn(board.getPlayerList().get(board.getPlayerTurn()),roll);  //sets the players turn
 		board.playing();
+		
+		buttonAccousation.addActionListener(new ActionListener() 
+		{
+	        public void actionPerformed(ActionEvent e) 	//button is pressed
+	        {
+	        	accousation = new Accousation(this);
+				accousation.setVisible(true);
+	        }
+		});
 		
 		
 		buttonNext.addActionListener(new ActionListener() 
@@ -93,7 +105,7 @@ public class GameControlPanel extends JPanel {
 		rollMain.add(roll2);
 		mainPanel.add(rollMain);								//adds to the panels
 		
-		JButton buttonAccousation = new JButton("Make Accousation");		//creates first button
+		buttonAccousation = new JButton("Make Accousation");		//creates first button
 		mainPanel.add(buttonAccousation);
 		
 		buttonNext = new JButton("Next");							//creates second button

@@ -53,6 +53,7 @@ public class Board extends JPanel implements MouseListener{
 	private JDialog suggestion;
 
 
+
 	public Board() {
 		super() ;
 
@@ -207,7 +208,7 @@ public class Board extends JPanel implements MouseListener{
 
 		try {
 
-			//reads in Layout.txt file//
+																			//reads in Layout.txt file//
 			FileReader read = new FileReader(setupConfigFile);				//opening file
 			Scanner input = new Scanner(read);
 
@@ -222,7 +223,7 @@ public class Board extends JPanel implements MouseListener{
 				String[] list = components.split(",");
 
 				for (int i = 0; i < list.length; i++) 
-				{					//trimming the file
+				{															//trimming the file
 					list[i] = list[i].trim();
 				}
 
@@ -232,11 +233,11 @@ public class Board extends JPanel implements MouseListener{
 					{
 						players.add(new HumanPlayer(list[1],list[2],Integer.parseInt(list[4]),Integer.parseInt(list[5])));		//adds to human player arrayList
 						deck.add(new Card(list[1], list[0]));	
-						//adds human player to deck
+																																//adds human player to deck
 					}else if(list[3].equals("Computer"))
 					{
 						players.add(new ComputerPlayer(list[1],list[2],Integer.parseInt(list[4]),Integer.parseInt(list[5])));	//adds to computer plan arrayList
-						deck.add(new Card(list[1], list[0]));									//adds computer player to deck
+						deck.add(new Card(list[1], list[0]));																	//adds computer player to deck
 					}
 
 					continue;
@@ -244,10 +245,10 @@ public class Board extends JPanel implements MouseListener{
 				}else if (list[0].equals("Weapon")) 
 				{
 					deck.add(new Card(list[1], list[0]));
-					continue;//adds weapons to deck
+					continue;																									//adds weapons to deck
 
 				}if(list[0].equals("Room") || list[0].equals("Space")) 
-				{		//making the map correctly
+				{																												//making the map correctly
 					roomMap.put(list[2].charAt(0), new Room(list[1]));
 					if ( list[0].equals("Room") ) {
 						deck.add(new Card(list[1], list[0]));
@@ -271,7 +272,7 @@ public class Board extends JPanel implements MouseListener{
 	public void loadLayoutConfig() throws BadConfigFormatException {
 
 		loadLayoutConfigTryCatch();
-		//refactoring
+																			//refactoring
 	}
 
 	private void loadLayoutConfigTryCatch() throws BadConfigFormatException {
@@ -897,6 +898,12 @@ public class Board extends JPanel implements MouseListener{
 			players.get(playerTurn).setRow(Location.getRow());
 			players.get(playerTurn).setCol(Location.getCol());
 			
+			if(players.get(playerTurn).isInRoom()) 
+			{
+				players.get(playerTurn).createSuggestion(deck,players.get(playerTurn).getRoom());
+				
+			}
+			
 		}
 
 	}
@@ -943,8 +950,9 @@ public class Board extends JPanel implements MouseListener{
 				{
 					target=gridBoard[i][j];
 					players.get(playerTurn).setInRoom(false);
-					if (gridBoard[i][j].getInitial()!='W') {
-
+					
+					if (gridBoard[i][j].getInitial()!='W') 
+					{
 						target=(roomMap.get(gridBoard[i][j].getInitial())).getCenterCell();
 						players.get(playerTurn).setInRoom(true);
 						players.get(playerTurn).setRoom(roomMap.get(gridBoard[i][j].getInitial()));

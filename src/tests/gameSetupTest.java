@@ -38,7 +38,7 @@ class gameSetupTest {
 		ArrayList<Card> deck = board.getDeck();
 		assertEquals(21, deck.size());
 		assertTrue(deck.contains(board.getCard("Anakin", CardType.PERSON)));
-		assertTrue(deck.contains(board.getCard("Bedroom", CardType.ROOM)));
+		assertTrue(deck.contains(board.getCard("Mandalore", CardType.ROOM)));
 		assertTrue(deck.contains(board.getCard("Blaster", CardType.WEAPON)));
 		assertTrue(deck.contains(board.getCard("Gungi", CardType.PERSON)));
 

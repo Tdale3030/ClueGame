@@ -141,6 +141,11 @@ public abstract class Player {
 		this.row= row;
 		
 	}
+	public boolean isInRoom() {
+		return inRoom;
+	}
+
+
 	public int[] getLocation() {
 		
 		return location;
