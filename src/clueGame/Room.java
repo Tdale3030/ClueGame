@@ -42,7 +42,7 @@ public class Room {
 			size = height;
 		}
 
-		graphics.setFont(new Font("Arial", Font.BOLD, size / 2));								//creating the correct writing for the room labels
+		graphics.setFont(new Font("Arial", Font.BOLD, size / 2));										//creating the correct writing for the room labels
 		graphics.setColor(Color.BLUE);
 		graphics.drawString(name,size * LabelCell.getCol(),size * LabelCell.getRow()); 
 

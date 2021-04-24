@@ -27,38 +27,36 @@ public class GameControlPanel extends JPanel {
 	private JButton buttonNext = new JButton("Next");
 	private JButton buttonAccousation = new JButton("Accousation");
 	private JDialog accousation;
+
 	private int roll;
-	
-	
 	
 
 	public GameControlPanel(Board board) {
 		
-		setLayout(new GridLayout(2,0));							//created main grid
+		setLayout(new GridLayout(2,0));																	//created main grid
 		JPanel panel = new JPanel(); 
 		JPanel panel2=new JPanel();
-		panel = layout1();										//adds to each panel
+		panel = layout1();																				//adds to each panel
 		add(panel);
-		panel2 = layout2();
+		panel2 = layout2(board);
 		add(panel2);
-		roll=board.roll();										//rolls dice
+		roll=board.roll();																				//rolls dice
 		board.setPathlength(roll);
-		setTurn(board.getPlayerList().get(board.getPlayerTurn()),roll);  //sets the players turn
+		setTurn(board.getPlayerList().get(board.getPlayerTurn()),roll); 								 //sets the players turn
 		board.playing();
 		
 		buttonAccousation.addActionListener(new ActionListener() 
 		{
-	        public void actionPerformed(ActionEvent e) 	//button is pressed
+	        public void actionPerformed(ActionEvent e) 													//button is pressed
 	        {
-	        	accousation = new Accousation(this);
+	        	accousation = new Accousation(this, board);												//accousation dialog popped up
 				accousation.setVisible(true);
 	        }
 		});
 		
-		
 		buttonNext.addActionListener(new ActionListener() 
 		{
-	        public void actionPerformed(ActionEvent e) 	//button is pressed
+	        public void actionPerformed(ActionEvent e) 													//button is pressed
 	        {
 	        	if(Board.isMoved() == false) 
 	        	{
@@ -67,16 +65,20 @@ public class GameControlPanel extends JPanel {
 	        		return;
 	        	}
 	        	
-	        	board.setPlayerTurn(board.getPlayerTurn()+1); // sets turn to next player
 	        	
-	        	if(board.getPlayerTurn()==6) //goes back to beginning of play list
+	        	
+	        	board.setSubmitPressed(false);
+	        	
+	        	board.setPlayerTurn(board.getPlayerTurn()+1); 											// sets turn to next player
+	        	
+	        	if(board.getPlayerTurn()==6) 															//goes back to beginning of play list
 	        	{
 	        		board.setPlayerTurn(0);
 	        	}
 	        	
 	        	roll=board.roll();
-	        	board.setPathlength(roll);		//sets pathlength to number rolled
-	        	board.playing();				//plays turn								
+	        	board.setPathlength(roll);																//sets pathlength to number rolled
+	        	board.playing();																		//plays turn								
 	        	setTurn(board.getPlayerList().get(board.getPlayerTurn()),roll);
 	        	
 	        }
@@ -85,53 +87,52 @@ public class GameControlPanel extends JPanel {
 
 	private JPanel layout1() {
 		
-		JPanel mainPanel = new JPanel();						//creates top grid
+		JPanel mainPanel = new JPanel();															//creates top grid
 		mainPanel.setLayout(new GridLayout(1,4));
 		
-		JPanel whoseTurnMain = new JPanel();					//creates the next panel
-		JLabel whoseTurn = new JLabel("Whose Turn?");			//creates the label
-		whoseTurn2 = new JTextField(15);				//allows for text to be entered
+		JPanel whoseTurnMain = new JPanel();														//creates the next panel
+		JLabel whoseTurn = new JLabel("Whose Turn?");												//creates the label
+		whoseTurn2 = new JTextField(15);															//allows for text to be entered
 		whoseTurn2.setEditable(false);
 		whoseTurnMain.add(whoseTurn);
 		whoseTurnMain.add(whoseTurn2);		
-		mainPanel.add(whoseTurnMain);							//adds to main panel
+		mainPanel.add(whoseTurnMain);																//adds to main panel
+			
 		
-		
-		JPanel rollMain = new JPanel();							//creates next panel
-		JLabel roll = new JLabel("Roll:");						//creates the label
-		roll2 = new JTextField(5);					//allows for text to be entered
+		JPanel rollMain = new JPanel();																//creates next panel
+		JLabel roll = new JLabel("Roll:");															//creates the label
+		roll2 = new JTextField(5);																	//allows for text to be entered
 		roll2.setEditable(false);
 		rollMain.add(roll);
 		rollMain.add(roll2);
-		mainPanel.add(rollMain);								//adds to the panels
+		mainPanel.add(rollMain);																	//adds to the panels
 		
-		buttonAccousation = new JButton("Make Accousation");		//creates first button
+		buttonAccousation = new JButton("Make Accousation");										//creates first button
 		mainPanel.add(buttonAccousation);
 		
-		buttonNext = new JButton("Next");							//creates second button
+		buttonNext = new JButton("Next");															//creates second button
 		mainPanel.add(buttonNext);
 		
 		return mainPanel;				
 	}
 	
-	private JPanel layout2() {									//creates bottom gird
-		
+	private JPanel layout2(Board board) {															//creates bottom gird
 		JPanel mainPanel2 = new JPanel();
 		mainPanel2.setLayout(new GridLayout(0,2));
 		
-		JPanel guessMain = new JPanel();						//creates the guess panel
-		this.guess = new JLabel();					//allows for text to be entered
+		JPanel guessMain = new JPanel();															//creates the guess panel
+		this.guess = new JLabel();																	//allows for text to be entered
 		guessMain.add(this.guess);
-		guessMain.setBorder(new TitledBorder(new EtchedBorder(), "Guess"));			//creates border
-		mainPanel2.add(guessMain);													//adds to main
+		guessMain.setBorder(new TitledBorder(new EtchedBorder(), "Guess"));							//creates border
+		mainPanel2.add(guessMain);																	//adds to main
 		
-		JPanel guessResultMain = new JPanel();						//creates next panel
-		this.guessResult = new JLabel();				//allows for text to be entered
+		JPanel guessResultMain = new JPanel();														//creates next panel
+		this.guessResult = new JLabel();															//allows for text to be entered
 		guessResultMain.add(this.guessResult);
 		guessResultMain.setBorder(new TitledBorder(new EtchedBorder(), "Guess Result"));			//creates border
 		mainPanel2.add(guessResultMain);
 		
-		return mainPanel2;											//returns whole panel
+		return mainPanel2;																			//returns whole panel
 	}
 	
 	private void setTurn(Player player, int rollNumber) {
@@ -148,4 +149,7 @@ public class GameControlPanel extends JPanel {
 	public void setGuessResult(String guess) {
 	    this.guessResult.setText(guess);
 	}
+	
+	
+	
 }

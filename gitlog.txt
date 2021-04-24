@@ -1,3 +1,21 @@
+commit 62c954c3e1687345a9c58ab2d5688ccda010e5aa
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Fri Apr 23 16:06:22 2021 -0600
+
+    Accousation Dialog
+
+commit 4827e3753ccf351cad637ea919ee4bfb4aaa314b
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Thu Apr 22 22:06:30 2021 -0600
+
+    added suggestion
+
+commit 4f9856d4b49db02410f7f9a7c7e66a653388d6db
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Thu Apr 22 22:05:54 2021 -0600
+
+    suggestion dialog made
+
 commit 14e7ff0e5f24fb8d805c310fc8946885c93ccfe4
 Author: brodyclark <brodyclark@mymail.mines.edu>
 Date:   Thu Apr 22 16:29:54 2021 -0600

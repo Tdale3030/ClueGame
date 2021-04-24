@@ -43,7 +43,7 @@ public class BoardCell {
     
 
 	public boolean isDoorway() {
-		//if this not a doorway it will return false otherwise it will return true
+																										//if this not a doorway it will return false otherwise it will return true
 		if(doorDirection == DoorDirection.NONE) {
     		return false;
     	}
@@ -116,7 +116,7 @@ public class BoardCell {
     }
 	
 	public void draw(Graphics graphics) {
-																	//allows for user to move the window
+																														//allows for user to move the window
 		if(height > width) 
 		{
 			size = width;
@@ -126,23 +126,23 @@ public class BoardCell {
 			size = height;
 		}
 		
-		if(initial == 'W') 											//if a walkway paint it yellow
-		{
+		if(initial == 'W') 																								//if a walkway paint it yellow
+		{	
 			graphics.setColor(Color.YELLOW);
 			graphics.fillRect(size * col + size / 10,size * row + size / 10,size - size / 5,size - size / 5);			//creates correct size
 				
 		}
 		else if (initial == 'Z') 
-		{									//if a black space, do nothing
+		{																												//if a black space, do nothing
 		}else if('G'==getSecretPassage() || 'B'==getSecretPassage() || 'L'==getSecretPassage() || 'C'==getSecretPassage()) {
 			graphics.setColor(Color.DARK_GRAY);
 			graphics.fillRect(size * col + size / 10,size * row + size / 10,size - size / 5,size - size / 5);			//creates correct size
 				
 		}
-			else														//else paint it black
+			else																										//else paint it black
 		{
 			graphics.setColor(Color.GRAY);
-			graphics.fillRect(size * col,size * row,size,size);											//creates the correct size
+			graphics.fillRect(size * col,size * row,size,size);															//creates the correct size
 		}
 		if(flag)
 		{
@@ -174,7 +174,7 @@ public class BoardCell {
 		switch(doorDirection){
 
 		case UP:
-			graphics.setColor(Color.BLUE);												//sets door colors to blue so player can see where to access a room
+			graphics.setColor(Color.BLUE);																	//sets door colors to blue so player can see where to access a room
 			graphics.fillRect(size * col,size * row - size / 5,size,size / 5);
 			break;
 
@@ -244,9 +244,5 @@ public class BoardCell {
 	public void setFlag(boolean flag) {
 		this.flag = flag;
 	}
-		
-		
-	
-
 
 }

@@ -87,7 +87,7 @@ public abstract class Player {
 		
 		int size = 0;
 		
-		if(height > width) 											//allows user to move the window
+		if(height > width) 																				//allows user to move the window
 		{
 			size = width;
 		}
@@ -96,11 +96,11 @@ public abstract class Player {
 			size = height;
 		}
 		if (inRoom) {
-			graphics.setColor(color);													//creates the player circle at the the correct size
+			graphics.setColor(color);																	//creates the player circle at the the correct size
 			graphics.fillOval(size * col+2 + (10 * pos),size * row+2,size - size / 5,size - size / 5);
 		}
 		else {
-			graphics.setColor(color);													//creates the player circle at the the correct size
+			graphics.setColor(color);																	//creates the player circle at the the correct size
 			graphics.fillOval(size * col+2,size * row+2,size - size / 5,size - size / 5);
 		}
 	
@@ -180,7 +180,7 @@ public abstract class Player {
 		Collections.shuffle(hand);
 		for(int i = 0; i < hand.size(); i++) 
 		{
-			if(hand.get(i) == solution.getPerson()) 			//if statements to find the correct hand
+			if(hand.get(i) == solution.getPerson()) 															//if statements to find the correct hand
 			{
 				return hand.get(i);
 			}

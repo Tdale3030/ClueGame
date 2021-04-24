@@ -15,22 +15,22 @@ public class ComputerPlayer extends Player {
 	
 	public Solution createSuggestion(ArrayList<Card> deck, Room room) {
 		 
-		Collections.shuffle(deck);				//shuffling
+		Collections.shuffle(deck);																				//shuffling
 		Solution possibleSolution = new Solution();
 		
-		for(int i = 0; i < deck.size(); i++) 						//if certain parts match, set equal
+		for(int i = 0; i < deck.size(); i++) 																	//if certain parts match, set equal
 		{
 			if(deck.get(i).getCardName().equals(room.getName()) && deck.get(i).getType() == CardType.ROOM) 
 			{
 				possibleSolution.setRoom(deck.get(i));
 			}
 			
-			if(hand.contains(deck.get(i)) || seenCards.contains(deck.get(i))) 		//continue statement
+			if(hand.contains(deck.get(i)) || seenCards.contains(deck.get(i))) 									//continue statement
 			{
 				continue;
 			}
 			
-			if(deck.get(i).getType() == CardType.WEAPON && possibleSolution.getWeapon() == null) 			//if type equals weapon and null set equal
+			if(deck.get(i).getType() == CardType.WEAPON && possibleSolution.getWeapon() == null) 				//if type equals weapon and null set equal
 			{
 				possibleSolution.setWeapon(deck.get(i));
 			}
@@ -38,7 +38,7 @@ public class ComputerPlayer extends Player {
 			else if(deck.get(i).getType() == CardType.PERSON && possibleSolution.getPerson() == null) 
 			{
 				possibleSolution.setPerson(deck.get(i));
-			}																			//if type equals person and null set equal
+			}																									//if type equals person and null set equal
 		}
 		
 		return possibleSolution;
@@ -48,16 +48,16 @@ public class ComputerPlayer extends Player {
 		
 		ArrayList<BoardCell> newDeck = new ArrayList<BoardCell>();
 		
-		for(BoardCell i: targets) 												//range base for set
+		for(BoardCell i: targets) 																				//range base for set
 		{
 			newDeck.add(i);
 		}
 		
-		Collections.shuffle(newDeck);					//shuffling
+		Collections.shuffle(newDeck);																			//shuffling
 		
 		for(int i = 0; i < newDeck.size(); i++) 
 		{
-			boolean saw = false;						//boolean equal false
+			boolean saw = false;																				//boolean equal false
 			
 			for(int j = 0; j < seenCards.size(); j++) 
 			{
@@ -69,13 +69,13 @@ public class ComputerPlayer extends Player {
 					}
 				}
 			}
-			if(saw == false && newDeck.get(i).isRoomCenter()) 						//setting newdeck to the index
+			if(saw == false && newDeck.get(i).isRoomCenter()) 													//setting newdeck to the index
 			{
 				return newDeck.get(i);
 			}
 		}
 		
-		for(int i = 0; i < newDeck.size(); i++) 				//finding last option
+		for(int i = 0; i < newDeck.size(); i++) 																//finding last option
 		{
 			if(!newDeck.get(i).isRoomCenter()) 
 			{

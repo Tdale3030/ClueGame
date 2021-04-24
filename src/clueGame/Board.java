@@ -51,6 +51,12 @@ public class Board extends JPanel implements MouseListener{
 	private String filePath;
 	private static boolean moved;
 	private JDialog suggestion;
+	private String guessWeapon;
+	private String guessPerson;
+	private String guessRoom;
+	private boolean submitPressed=false;
+	private GameControlPanel gameControlPanel;
+	private clueCardsGUI ClueCardsGUI;
 
 
 
@@ -63,38 +69,38 @@ public class Board extends JPanel implements MouseListener{
 
 		boardCreation();
 
-		setBackground(Color.BLACK);										//sets background to black twice
+		setBackground(Color.BLACK);																			//sets background to black twice
 
 	}
 
 	public int roll() {
-		//finds a random number between 1 and 6 for the roll
+																											//finds a random number between 1 and 6 for the roll
 		Random rand = new Random();
 		int randomNum = rand.nextInt( (6 - 1) + 1 ) + 1;
 
-		return randomNum;												//returns the random number
+		return randomNum;																					//returns the random number
 	}
 
 	public void paintComponent(Graphics graphics) {
 
-		super.paintComponent(graphics);									//sets background to black
+		super.paintComponent(graphics);																		//sets background to black
 		setBackground(Color.BLACK);
 
-		for(int i = 0; i < numRows; i++) 								//nested for loops for the grid
+		for(int i = 0; i < numRows; i++) 																	//nested for loops for the grid
 		{
 			for(int j = 0; j < numColumns;j++) 
 			{
-				gridBoard[i][j].setWidth(getWidth() / numRows);					//drawing the grid onto the black
+				gridBoard[i][j].setWidth(getWidth() / numRows);												//drawing the grid onto the black
 				gridBoard[i][j].setHeight(getHeight() / numColumns);
 				gridBoard[i][j].draw(graphics);
 			}
 
 		}
-		for(int i = 0; i < numRows; i++) 								//nested for loops for the grid
+		for(int i = 0; i < numRows; i++) 																	//nested for loops for the grid
 		{
 			for(int j = 0; j < numColumns;j++) 
 			{
-				gridBoard[i][j].setWidth(getWidth() / numRows);					//drawing the grid onto the black
+				gridBoard[i][j].setWidth(getWidth() / numRows);												//drawing the grid onto the black
 				gridBoard[i][j].setHeight(getHeight() / numColumns);
 				gridBoard[i][j].drawDoorway(graphics);
 			}
@@ -121,16 +127,16 @@ public class Board extends JPanel implements MouseListener{
 
 		for(int i = 0; i < players.size(); i++) 
 		{
-			players.get(i).setWidth(getWidth() / numRows);									//drawing the players as circles
+			players.get(i).setWidth(getWidth() / numRows);															//drawing the players as circles
 			players.get(i).setHeight(getHeight() / numColumns);
 			players.get(i).draw(graphics);
 		}
-		repaint();																	//repaints
+		repaint();																									//repaints
 	}
 
 	private void boardCreation() {
 
-		for(int i=0;i<numRows;i++) 
+		for(int i=0;i<numRows;i++) 																					//nested for loop to find rows and cols
 		{
 			for(int j=0;j<numColumns;j++) 
 			{
@@ -140,7 +146,7 @@ public class Board extends JPanel implements MouseListener{
 	}
 
 
-	// this method returns the only Board
+																													// this method returns the only Board
 	public static Board getInstance() {
 		return theInstance;
 	}
@@ -151,14 +157,14 @@ public class Board extends JPanel implements MouseListener{
 	 */
 	public void initialize() throws BadConfigFormatException, FileNotFoundException{
 
-		initializeTryCatch();
+		initializeTryCatch();																						//refactored
 		allAdj();
 		deal();
 		addMouseListener(this);
 		/*
 		try
 		{
-			filePath = "data/starwars.wav";
+			filePath = "data/starwars.wav";																			//adding music in
 			SimpleAudioPlayer audioPlayer = 
 					new SimpleAudioPlayer(filePath);
 
@@ -168,7 +174,7 @@ public class Board extends JPanel implements MouseListener{
 
 		catch (Exception ex) 
 		{
-			System.out.println("Error with playing sound.");
+			System.out.println("Error with playing sound.");														//exits if music failed
 			ex.printStackTrace();
 
 		}*/
@@ -179,7 +185,7 @@ public class Board extends JPanel implements MouseListener{
 
 		try {
 
-			loadSetupConfig();
+			loadSetupConfig();																						//try and catch for refactored
 			loadLayoutConfig();
 
 		}catch(BadConfigFormatException exp){
@@ -200,7 +206,7 @@ public class Board extends JPanel implements MouseListener{
 		this.players = new ArrayList<Player>();
 		this.theAnswer = new Solution();
 
-		loadSetUpConfigTryCatch();										//refactoring
+		loadSetUpConfigTryCatch();																					//refactoring
 
 	}
 
@@ -208,14 +214,14 @@ public class Board extends JPanel implements MouseListener{
 
 		try {
 
-																			//reads in Layout.txt file//
-			FileReader read = new FileReader(setupConfigFile);				//opening file
+																													//reads in Layout.txt file//
+			FileReader read = new FileReader(setupConfigFile);														//opening file
 			Scanner input = new Scanner(read);
 
 			while(input.hasNextLine()) 
 			{
 				String components = input.nextLine();
-				if(components.charAt(0) == '/') {							//if statements for comments in file
+				if(components.charAt(0) == '/') {																	//if statements for comments in file
 
 					continue;
 				}
@@ -223,8 +229,8 @@ public class Board extends JPanel implements MouseListener{
 				String[] list = components.split(",");
 
 				for (int i = 0; i < list.length; i++) 
-				{															//trimming the file
-					list[i] = list[i].trim();
+				{																									//trimming the file
+					list[i] = list[i].trim();	
 				}
 
 				if(list[0].equals("Character")) 
@@ -259,11 +265,11 @@ public class Board extends JPanel implements MouseListener{
 
 			}
 
-			input.close();													//close file
+			input.close();																							//close file
 
 		}catch(FileNotFoundException exp)
 		{
-			System.out.println("File cannot open ");						//file cannot open thrown exception
+			System.out.println("File cannot open ");																//file cannot open thrown exception
 
 		}
 	}
@@ -272,38 +278,38 @@ public class Board extends JPanel implements MouseListener{
 	public void loadLayoutConfig() throws BadConfigFormatException {
 
 		loadLayoutConfigTryCatch();
-																			//refactoring
+																													//refactoring
 	}
 
 	private void loadLayoutConfigTryCatch() throws BadConfigFormatException {
 
 		try {
 
-			ArrayList<String> list = new ArrayList<String>();				//creates new array
+			ArrayList<String> list = new ArrayList<String>();														//creates new array
 
-			File file = new File(layoutConfiFile);							//reads file
+			File file = new File(layoutConfiFile);																	//reads file
 			Scanner input = new Scanner(file);
 
 			nextLine(list, input);
 
-			input.close();													//closes file
+			input.close();																							//closes file
 
 
-			numRows=list.size();											//rows size
+			numRows=list.size();																					//rows size
 			String[] list1 = list.get(0).split(",");
-			numColumns = list1.length;										//finding column size
+			numColumns = list1.length;																				//finding column size
 
 			for (String i: list) 
 			{
 				String[] temp = i.split(",");
 
 				if (temp.length != numColumns) 
-				{					//for loop for throw exception
+				{																									//for loop for throw exception
 					throw new BadConfigFormatException("Wrong number of columns.");
 				}
 			}
 
-			//Creates a grid and then runs a for loop through the entire Array creating locations for the each space on the board
+															//Creates a grid and then runs a for loop through the entire Array creating locations for the each space on the board
 			gridBoard = new BoardCell[numRows][numColumns];
 
 			for(int i = 0; i<list.size(); i++) 
@@ -320,7 +326,7 @@ public class Board extends JPanel implements MouseListener{
 
 					ifStatementsForDoorway(list2, j, BoardCell2);
 
-					gridBoard[i][j] = BoardCell2;//Sets all values of temp equal to the location on the grid
+					gridBoard[i][j] = BoardCell2;																	//Sets all values of temp equal to the location on the grid
 
 				}
 
@@ -329,7 +335,7 @@ public class Board extends JPanel implements MouseListener{
 
 		}catch(FileNotFoundException exp) 
 		{
-			System.out.println("File cannot open ");//File was unable to open
+			System.out.println("File cannot open ");																//File was unable to open
 		}
 	}
 
@@ -337,14 +343,14 @@ public class Board extends JPanel implements MouseListener{
 	private void nextLine(ArrayList<String> list, Scanner input) throws BadConfigFormatException {
 
 		while (input.hasNext()) 
-		{								//while loop
+		{																											//while loop
 			String next = input.nextLine();
 			list.add(next);
 			String[] badRoom = next.split(", ");
 
 			for(int i = 0; i<badRoom.length; i++) 
 			{
-				if(!roomMap.containsKey(badRoom[i].charAt(0))) 
+				if(!roomMap.containsKey(badRoom[i].charAt(0))) 														//finds bad room
 				{
 					throw new BadConfigFormatException("Bad Room");
 				}
@@ -359,31 +365,31 @@ public class Board extends JPanel implements MouseListener{
 		{
 			if(list2[j].charAt(1)== '*') 
 			{
-				BoardCell2.setRoomCenter(true);//setting room location to center of the room
+				BoardCell2.setRoomCenter(true);																		//setting room location to center of the room
 				roomMap.get(list2[j].charAt(0)).setCenterCell(BoardCell2);
 
 			}else if(list2[j].charAt(1) == '#') 
 			{
-				BoardCell2.setRoomLabel(true);//Sets the room label
+				BoardCell2.setRoomLabel(true);																		//Sets the room label
 				roomMap.get(list2[j].charAt(0)).setLabelCell(BoardCell2);
 			}else if(list2[j].charAt(1) == '^') 
 			{
-				BoardCell2.setDoorDirection(DoorDirection.UP);//sets door direction
-				setDoorwayTrue(BoardCell2);//says that theres a doorway at this location
+				BoardCell2.setDoorDirection(DoorDirection.UP);														//sets door direction
+				setDoorwayTrue(BoardCell2);																			//says that theres a doorway at this location
 
 			}else if(list2[j].charAt(1) == 'v') 
 			{
-				BoardCell2.setDoorDirection(DoorDirection.DOWN);//sets door direction
+				BoardCell2.setDoorDirection(DoorDirection.DOWN);													//sets door direction
 				setDoorwayTrue(BoardCell2);
 
 			}else if(list2[j].charAt(1) == '<') 
 			{
-				BoardCell2.setDoorDirection(DoorDirection.LEFT);//sets door direction
+				BoardCell2.setDoorDirection(DoorDirection.LEFT);													//sets door direction
 				setDoorwayTrue(BoardCell2);
 
 			}else if(list2[j].charAt(1) == '>') 
 			{
-				BoardCell2.setDoorDirection(DoorDirection.RIGHT);//sets door direction
+				BoardCell2.setDoorDirection(DoorDirection.RIGHT);													//sets door direction
 				setDoorwayTrue(BoardCell2);
 
 			}else {
@@ -410,13 +416,13 @@ public class Board extends JPanel implements MouseListener{
 	private void addingTo(int numSteps) {
 
 		for(BoardCell i: adjList) 
-		{								//for loop for adjlist
+		{																											//for loop for adjlist
 			if(visited.contains(i)) 
-			{							//see if visited
+			{																										//see if visited
 				continue;
 			}
 			if((i.getOccupied())) 
-			{								//if it is occupied set room center to false
+			{																										//if it is occupied set room center to false
 				if(i.isRoomCenter()) 
 				{
 					i.setOccupied(false);
@@ -426,12 +432,12 @@ public class Board extends JPanel implements MouseListener{
 				}
 
 			}if(i.isRoomCenter()) 
-			{								//add if room center
+			{																										//add if room center
 				pathTargets.add(i);
 				continue;
 			}
 			visited.add(i);	
-			//if visited add
+																													//if visited add
 			if (numSteps == 1) 
 			{					
 				pathTargets.add(i);
@@ -446,20 +452,20 @@ public class Board extends JPanel implements MouseListener{
 	public void allAdj() {
 
 		for(int i=0;i<numRows;i++) 
-		{							//for loop for size
+		{																											//for loop for size
 			for(int j=0;j<numColumns;j++) 
 			{
 				if(gridBoard[i][j].isRoomCenter()) 
-				{					//for loop for if room center is true
+				{																									//for loop for if room center is true
 					secretPassageForLoops();	
 
-					findingDoorDirection(i, j);		//refactored
+					findingDoorDirection(i, j);																		//refactored
 					continue;
 				}
 
-				isDoorwayRefactored(i, j);		//refactored
+				isDoorwayRefactored(i, j);																			//refactored
 
-				getInitialAdding(i, j);		//refactored
+				getInitialAdding(i, j);																				//refactored
 
 			}
 		}
@@ -473,7 +479,7 @@ public class Board extends JPanel implements MouseListener{
 			for (int b = 0; b<numColumns; b++) 
 			{
 				if(gridBoard[a][b].getSecretPassage() != ' ') 
-				{		//adding to grid for secret passage
+				{																									//adding to grid for secret passage
 					BoardCell one = roomMap.get(gridBoard[a][b].getSecretPassage()).getCenterCell();
 					BoardCell two = roomMap.get(gridBoard[a][b].getInitial()).getCenterCell();
 
@@ -490,7 +496,7 @@ public class Board extends JPanel implements MouseListener{
 		for(int a = 0; a<numRows; a++) 
 		{
 			for (int b = 0; b<numColumns; b++)
-			{			//see the door direction
+			{																										//see the door direction
 
 				ifStatementsForDoorDir(i, j, a, b);
 			}
@@ -503,28 +509,28 @@ public class Board extends JPanel implements MouseListener{
 		if(gridBoard[a][b].isDoorway()) 
 		{
 			if(gridBoard[a][b].getDoorDirection() == DoorDirection.UP)
-			{																		//for up
+			{																										//for up
 				if(gridBoard[a-1][b].getInitial() == gridBoard[i][j].getInitial()) 
 				{
-					addToAdj(i, j, a, b);	//adds to list 
+					addToAdj(i, j, a, b);																			//adds to list 
 				}
 
 			}if(gridBoard[a][b].getDoorDirection() == DoorDirection.DOWN)
-			{																		//for down
+			{																										//for down
 				if(gridBoard[a+1][b].getInitial() == gridBoard[i][j].getInitial()) 
 				{
 					addToAdj(i, j, a, b);
-				}
+				}			
 
 			}if(gridBoard[a][b].getDoorDirection() == DoorDirection.RIGHT)
-			{																		//for right
+			{																										//for right
 				if(gridBoard[a][b+1].getInitial() == gridBoard[i][j].getInitial()) 
 				{
 					addToAdj(i, j, a, b);
 				}
 
 			}if(gridBoard[a][b].getDoorDirection() == DoorDirection.LEFT)
-			{																		//for left
+			{																										//for left
 				if(gridBoard[a][b-1].getInitial() == gridBoard[i][j].getInitial()) 
 				{
 					addToAdj(i, j, a, b);
@@ -549,28 +555,28 @@ public class Board extends JPanel implements MouseListener{
 			dir = gridBoard[i][j].getDoorDirection();
 
 			if(dir==DoorDirection.UP) 
-			{		//finds door direction if up
+			{																										//finds door direction if up
 				BoardCell one = roomMap.get(gridBoard[i-1][j].getInitial()).getCenterCell();
 
 				gridBoard[i][j].addAdj(one);
 
 
 			}else if(dir==DoorDirection.DOWN) 
-			{		//finds door direction if down
+			{																										//finds door direction if down
 				BoardCell one = roomMap.get(gridBoard[i+1][j].getInitial()).getCenterCell();
 
 				gridBoard[i][j].addAdj(one);
 
 
 			}else if(dir==DoorDirection.LEFT) 
-			{		//finds door direction if left
+			{																										//finds door direction if left
 				BoardCell one = roomMap.get(gridBoard[i][j-1].getInitial()).getCenterCell();
 
 				gridBoard[i][j].addAdj(one);
 
 
 			}else if(dir==DoorDirection.RIGHT) 
-			{		//finds door direction if right
+			{																										//finds door direction if right
 				BoardCell one = roomMap.get(gridBoard[i][j+1].getInitial()).getCenterCell();
 
 				gridBoard[i][j].addAdj(one);
@@ -585,26 +591,26 @@ public class Board extends JPanel implements MouseListener{
 		if ((i-1) >= 0) 
 		{
 			if(gridBoard[i][j].getInitial() == gridBoard[i-1][j].getInitial()) 
-			{			//makes sure the user is inside the grid
+			{																										//makes sure the user is inside the grid
 				gridBoard[i][j].addAdjacency(gridBoard[i-1][j]);
 			}
 
 		}if ((i+1) <= numRows-1) 
-		{			//makes sure the user is inside the grid
+		{																											//makes sure the user is inside the grid
 			if(gridBoard[i][j].getInitial() == gridBoard[i+1][j].getInitial()) 
 			{
 				gridBoard[i][j].addAdjacency(gridBoard[i+1][j]);
 			}
 
 		}if ((j-1) >= 0) 
-		{					//makes sure the user is inside the grid
+		{																											//makes sure the user is inside the grid
 			if(gridBoard[i][j].getInitial() == gridBoard[i][j-1].getInitial())
 			{
 				gridBoard[i][j].addAdjacency(gridBoard[i][j-1]);
 			}
 
 		}if ((j+1) <= numColumns-1) 
-		{				//makes sure the user is inside the grid
+		{																											//makes sure the user is inside the grid
 			if(gridBoard[i][j].getInitial() == gridBoard[i][j+1].getInitial()) 
 			{
 				gridBoard[i][j].addAdjacency(gridBoard[i][j+1]);
@@ -653,7 +659,7 @@ public class Board extends JPanel implements MouseListener{
 
 	public BoardCell getCell(int row, int col) {
 
-		return gridBoard[row][col];//returns the value of the cell
+		return gridBoard[row][col];																					//returns the value of the cell
 	}
 
 
@@ -671,17 +677,17 @@ public class Board extends JPanel implements MouseListener{
 
 	public Set<BoardCell> getAdjList(int i, int j) {
 
-		return gridBoard[i][j].getAdjList();								//return adjlist
+		return gridBoard[i][j].getAdjList();																		//return adjlist
 	}
 
 
 	public void deal() {
 
-		Collections.shuffle(deck);//Shuffles deck
+		Collections.shuffle(deck);																					//Shuffles deck
 
-		for(int i = 0; i < deck.size(); i++) //iterates through deck
+		for(int i = 0; i < deck.size(); i++) 																		//iterates through deck
 		{
-			if (usedCards.contains(deck.get(i))) //if the card is used continue
+			if (usedCards.contains(deck.get(i))) 																	//if the card is used continue
 			{
 				continue;
 			}
@@ -691,21 +697,21 @@ public class Board extends JPanel implements MouseListener{
 			case WEAPON:
 				if(theAnswer.getWeapon() == null)
 				{
-					theAnswer.setWeapon(deck.get(i));// sets the solutions weapon
+					theAnswer.setWeapon(deck.get(i));																// sets the solutions weapon
 					usedCards.add(deck.get(i));
 				}
 				break;
 			case ROOM:
 				if(theAnswer.getRoom() == null)
 				{
-					theAnswer.setRoom(deck.get(i));// sets the solutions weapon
+					theAnswer.setRoom(deck.get(i));																	// sets the solutions weapon
 					usedCards.add(deck.get(i));
 				}
 				break;
 			case PERSON:
 				if(theAnswer.getPerson() == null)
 				{
-					theAnswer.setPerson(deck.get(i));// sets the solutions weapon
+					theAnswer.setPerson(deck.get(i));																// sets the solutions weapon
 					usedCards.add(deck.get(i));
 				}
 				break;
@@ -714,50 +720,54 @@ public class Board extends JPanel implements MouseListener{
 
 
 		}
-		for(int i=0;i<players.size();i++)//iterates through lists of players
+		for(int i=0;i<players.size();i++)																			//iterates through lists of players
 		{
 			int count = 0;
 
-			for(int j=0;j<deck.size();j++)//iterates through deck
+			for(int j=0;j<deck.size();j++)																			//iterates through deck
 			{
 
-				if(usedCards.contains(deck.get(j))) // continue if is a used card
+				if(usedCards.contains(deck.get(j))) 																// continue if is a used card
 				{
 					continue;
 
 				}
 
-				players.get(i).updateHand(deck.get(j)); //give card to player
+				players.get(i).updateHand(deck.get(j)); 															//give card to player
 				usedCards.add(deck.get(j));
 				count=count+1;
 
-				if(count==3) //break loop when each player has three cards
+				if(count==3) 																						//break loop when each player has three cards
 				{
 					break;
 				}
 			}
 		}
 	}
-
-	public boolean checkAccusation(Solution solution) {					//checking to see if answer and solution match
+	
+	public boolean checkAccusation(Solution solution) {																//checking to see if answer and solution match
 
 		if ((theAnswer.getPerson() == solution.getPerson()) && (theAnswer.getWeapon() == solution.getWeapon()) && (theAnswer.getRoom() == solution.getRoom()))
 		{
 			return true;
 
-		}else {					//if yes, return true, if not, return false
+		}else {																										//if yes, return true, if not, return false
 			return false;
 		}
 	}
 
 	public Card handleSuggestions(Solution solution) {
 
-		for (int i = 0; i < players.size(); i++) 						//if it does not equal a null, then return it
+		for (int i = 0; i < players.size(); i++) 																	//if it does not equal a null, then return it
 		{
+			if(playerTurn==i) {
+				i=i+1;
+			}
 			if(players.get(i).disproveSuggestion(solution) != null) 
 			{
 				return players.get(i).disproveSuggestion(solution);
 			}
+			
 		}
 
 		return null;
@@ -792,7 +802,7 @@ public class Board extends JPanel implements MouseListener{
 	}
 	public Player getPlayer(String player) {
 
-		for(int i=0;i<players.size();i++) //loops through players list and finds the player 
+		for(int i=0;i<players.size();i++) 																				//loops through players list and finds the player 
 		{
 			if(players.get(i).getName().equals(player)) 
 			{
@@ -809,7 +819,7 @@ public class Board extends JPanel implements MouseListener{
 
 	public Card getCard(String string, CardType type) {
 
-		for(Card i : deck) //iterates through cards until it finds the card that wanted
+		for(Card i : deck) 																								//iterates through cards until it finds the card that wanted
 		{
 			if(i.getCardName().equals(string) && i.getType() == type) 
 			{
@@ -835,22 +845,22 @@ public class Board extends JPanel implements MouseListener{
 
 	public void playing() {
 
-		if(playerTurn == 0) 																		//if human player
+		if(playerTurn == 0) 																							//if human player
 		{
 			pathTargets=null;
-			startCell = getCell((players.get(0).getRow()),(players.get(0).getCol()));				//gets all information to find player and locations
+			startCell = getCell((players.get(0).getRow()),(players.get(0).getCol()));									//gets all information to find player and locations
 			calcTargets(startCell,pathlength);
 
-			for(int i=0;i<numRows;i++) 																//nested loop to see where at in grid
+			for(int i=0;i<numRows;i++) 																					//nested loop to see where at in grid
 			{
 				for(int j=0;j<numColumns;j++) 
 				{
-					if(pathTargets.contains(gridBoard[i][j])) 										//finds if the grid location is a valid space
+					if(pathTargets.contains(gridBoard[i][j])) 															//finds if the grid location is a valid space
 					{
-						gridBoard[i][j].setFlag(true);												//valid move spaces for player
+						gridBoard[i][j].setFlag(true);																	//valid move spaces for player
 
 					}else {
-						gridBoard[i][j].setFlag(false);												//not a valid place for user to click
+						gridBoard[i][j].setFlag(false);																	//not a valid place for user to click
 					}
 				}
 			}
@@ -858,49 +868,49 @@ public class Board extends JPanel implements MouseListener{
 
 			moved = false;
 			
-		}else {																						//if not a human player
+		}else {																											//if not a human player
 			for(int i=0;i<numRows;i++) 												
-			{																						//nested loop to see where on grid
+			{																											//nested loop to see where on grid
 				for(int j=0;j<numColumns;j++) 
 				{
-					gridBoard[i][j].setFlag(false);	//if not a flag, then repaint so user can't click
+					gridBoard[i][j].setFlag(false);																		//if not a flag, then repaint so user can't click
 					gridBoard[i][j].setOccupied(false);
 					
 					for(Player k: players) 
 					{
 						if(k.getRow() == i && k.getCol() == j) 
 						{
-							gridBoard[i][j].setOccupied(true);
+							gridBoard[i][j].setOccupied(true);															//sets spots to occupied
 						}
 					}
 					repaint();
 				}
 			}
 
-			
-
 			calcTargets(gridBoard[players.get(playerTurn).getRow()][players.get(playerTurn).getCol()], roll());					//creates the computer player to move
 			BoardCell Location = players.get(playerTurn).selectTargets(pathTargets);
 			players.get(playerTurn).setInRoom(false);
 
-			if (Location.isRoomCenter()) 
+			if (Location.isRoomCenter()) 																						//finds player location
 			{
-				players.get(playerTurn).setInRoom(true);
+				players.get(playerTurn).setInRoom(true);																		//sets in room true
 			}
 			
 			
 			if(Location.getRow() == players.get(playerTurn).getRow() && Location.getCol() == players.get(playerTurn).getCol()) 
 			{
-				moved = false;
+				moved = false;																									//finds if player has moved or not
 			}	
 			
 			
-			players.get(playerTurn).setRow(Location.getRow());
+			players.get(playerTurn).setRow(Location.getRow());																	
 			players.get(playerTurn).setCol(Location.getCol());
+			
 			
 			if(players.get(playerTurn).isInRoom()) 
 			{
-				players.get(playerTurn).createSuggestion(deck,players.get(playerTurn).getRoom());
+				players.get(playerTurn).setRoom(roomMap.get(Location.getInitial()));
+				players.get(playerTurn).createSuggestion(deck,(players.get(playerTurn)).getRoom());
 				
 			}
 			
@@ -926,7 +936,7 @@ public class Board extends JPanel implements MouseListener{
 	}
 	public void mousePressed(MouseEvent e) {
 		int size = 0;
-		//allows for user to move the window
+																											//allows for user to move the window							
 		if(getHeight() > getWidth()) 
 		{
 			size = getWidth();
@@ -942,7 +952,7 @@ public class Board extends JPanel implements MouseListener{
 
 
 
-		for(int i=0;i<numRows;i++) 
+		for(int i=0;i<numRows;i++)  																		//goes through each cell on board until it finds where was clicked
 		{
 			for(int j=0;j<numColumns;j++) 
 			{
@@ -950,16 +960,15 @@ public class Board extends JPanel implements MouseListener{
 				{
 					target=gridBoard[i][j];
 					players.get(playerTurn).setInRoom(false);
-					
-					if (gridBoard[i][j].getInitial()!='W') 
+
+					if (gridBoard[i][j].getInitial()!='W')  												//if cell is a walkway
 					{
-						target=(roomMap.get(gridBoard[i][j].getInitial())).getCenterCell();
-						players.get(playerTurn).setInRoom(true);
+						target=(roomMap.get(gridBoard[i][j].getInitial())).getCenterCell();					//finds center of room 
+						players.get(playerTurn).setInRoom(true);											//sets that there is someone in the room
 						players.get(playerTurn).setRoom(roomMap.get(gridBoard[i][j].getInitial()));
-						suggestion = new Suggestion(this);
-						suggestion.setVisible(true);
+						
 					}
-					
+
 					if(target!=null)
 					{
 						break;
@@ -967,21 +976,83 @@ public class Board extends JPanel implements MouseListener{
 				}
 			}
 		}
-		
-		if(pathTargets.contains(target)) 
-		{
-			players.get(playerTurn).setRow(target.getRow());
-			players.get(playerTurn).setCol(target.getCol());
-			moved=true;
-			
-		}else {
+		if(!submitPressed) {
+			if(pathTargets.contains(target)) 				
+			{
+				players.get(playerTurn).setRow(target.getRow());
+				players.get(playerTurn).setCol(target.getCol());
+				moved=true;
+				
+				if(players.get(playerTurn).isInRoom()) {																			//sees if person already made a move
+					suggestion = new Suggestion(this);															//if not they can make suggestion if in room
+					suggestion.setVisible(true);
+				}
 
-			JOptionPane.showMessageDialog(null, "Not a valid move", "Error Message", JOptionPane.ERROR_MESSAGE);
+				setSubmitPressed(true);
+					
+			}else {
+
+				JOptionPane.showMessageDialog(null, "Not a valid move", "Error Message", JOptionPane.ERROR_MESSAGE);
+			}
 		}
+
+		
 	}
 
 	public static boolean isMoved() {
 		return moved;
+	}
+	public String getGuessWeapon() {
+		return guessWeapon;
+	}
+
+	public void setGuessWeapon(String guessWeapon) {
+		this.guessWeapon = guessWeapon;
+	}
+
+	public String getGuessPerson() {
+		return guessPerson;
+	}
+
+	public void setGuessPerson(String guessPerson) {
+		this.guessPerson = guessPerson;
+	}
+
+	public String getGuessRoom() {
+		return guessRoom;
+	}
+
+	public void setGuessRoom(String guessRoom) {
+		
+		this.guessRoom = guessRoom;
+		
+		
+	}
+
+	public boolean isSubmitPressed() {
+		return submitPressed;
+	}
+
+	public void setSubmitPressed(boolean submitPressed) {
+		this.submitPressed = submitPressed;
+	}
+	
+	public void setGameControlPanel(GameControlPanel gameControlPanel) {
+		this.gameControlPanel = gameControlPanel;
+	}
+	
+	public GameControlPanel getGameControlPanel() {
+		
+		return gameControlPanel;
+	}
+	
+	public void setClueCardsGUI(clueCardsGUI ClueCardsGUI) {
+		this.ClueCardsGUI = ClueCardsGUI;
+	}
+	
+	public clueCardsGUI getClueCardGUI() {
+		
+		return ClueCardsGUI;
 	}
 }
 

@@ -31,9 +31,11 @@ public class ClueGame extends JFrame {
 		players = Board.getPlayerList();
 		JOptionPane.showMessageDialog(null, "         You are Anakin.\n  Can you find the solution \nbefore the Computer players?", "Welcome to Clue", JOptionPane.INFORMATION_MESSAGE);
 		setSize(new Dimension(1100,1000)); // size the frame
-		Player player = players.get(board.getPlayerTurn());			//computer players
-		JPanel east = new clueCardsGUI(player);
-		JPanel south = new GameControlPanel(board);
+		Player player = players.get(board.getPlayerTurn());																//computer players
+		clueCardsGUI east = new clueCardsGUI(player);
+		board.setClueCardsGUI(east);
+		GameControlPanel south = new GameControlPanel(board);
+		board.setGameControlPanel(south);
 		JPanel center = new JPanel();
 		east.setPreferredSize(new Dimension(250,400));
 		south.setPreferredSize(new Dimension(800,200));
@@ -46,11 +48,11 @@ public class ClueGame extends JFrame {
 	
 	public static void main(String[] args) throws FileNotFoundException, BadConfigFormatException {
 		
-		ClueGame frame = new ClueGame();  // create the panel
+		ClueGame frame = new ClueGame();  																				// create the panel
 	
 		
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
-		frame.setVisible(true); // make it visible
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 															// allow it to close
+		frame.setVisible(true); 																						// make it visible
 		
 		
 	
