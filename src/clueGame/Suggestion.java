@@ -116,6 +116,16 @@ public class Suggestion extends JDialog {
 	        	{
 	        		board.getGameControlPanel().setGuessResult("No one can disprove");
 	        	}
+	        	for (Player i: board.getPlayerList()) 
+				{
+					if(i.getName().equals(solution.getPerson().getCardName())) 
+					{
+						i.setCol(board.getPlayerList().get(board.getPlayerTurn()).getCol());
+						i.setRow(board.getPlayerList().get(board.getPlayerTurn()).getRow());
+						i.setInRoom(true);
+						i.setRoom(board.getPlayerList().get(board.getPlayerTurn()).getRoom());
+					}
+				}
 	      
 	        	setVisible(false);																					//leaves pop up
 	        	

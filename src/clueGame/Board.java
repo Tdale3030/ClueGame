@@ -57,7 +57,8 @@ public class Board extends JPanel implements MouseListener{
 	private boolean submitPressed=false;
 	private GameControlPanel gameControlPanel;
 	private clueCardsGUI ClueCardsGUI;
-
+	private String guessAI;
+	private String guessResultAI;
 
 
 	public Board() {
@@ -161,7 +162,7 @@ public class Board extends JPanel implements MouseListener{
 		allAdj();
 		deal();
 		addMouseListener(this);
-		/*
+		
 		try
 		{
 			filePath = "data/starwars.wav";																			//adding music in
@@ -177,8 +178,7 @@ public class Board extends JPanel implements MouseListener{
 			System.out.println("Error with playing sound.");														//exits if music failed
 			ex.printStackTrace();
 
-		}*/
-		//refactoring
+		}
 	}
 
 	private void initializeTryCatch() {
@@ -869,6 +869,11 @@ public class Board extends JPanel implements MouseListener{
 			moved = false;
 			
 		}else {																											//if not a human player
+			if (players.get(playerTurn).getGuessedCorrect()) 
+			{
+				JOptionPane.showMessageDialog(null, "YOU LOST\nCOMPUTER WON", "GAMEOVER", JOptionPane.INFORMATION_MESSAGE);
+				System.exit(0);
+			}
 			for(int i=0;i<numRows;i++) 												
 			{																											//nested loop to see where on grid
 				for(int j=0;j<numColumns;j++) 
@@ -890,7 +895,8 @@ public class Board extends JPanel implements MouseListener{
 			calcTargets(gridBoard[players.get(playerTurn).getRow()][players.get(playerTurn).getCol()], roll());					//creates the computer player to move
 			BoardCell Location = players.get(playerTurn).selectTargets(pathTargets);
 			players.get(playerTurn).setInRoom(false);
-
+			guessAI = "";
+			guessResultAI = "";
 			if (Location.isRoomCenter()) 																						//finds player location
 			{
 				players.get(playerTurn).setInRoom(true);																		//sets in room true
@@ -910,9 +916,33 @@ public class Board extends JPanel implements MouseListener{
 			if(players.get(playerTurn).isInRoom()) 
 			{
 				players.get(playerTurn).setRoom(roomMap.get(Location.getInitial()));
-				players.get(playerTurn).createSuggestion(deck,(players.get(playerTurn)).getRoom());
+				Solution solutionAI =players.get(playerTurn).createSuggestion(deck,(players.get(playerTurn)).getRoom());	//alows for AI to win
+				guessAI = solutionAI.getPerson().getCardName() + ", " + solutionAI.getRoom().getCardName() + ", " + solutionAI.getWeapon().getCardName();
+				Card checkAnswer = handleSuggestions(solutionAI);
 				
+				if (checkAnswer == null) 
+				{
+					players.get(playerTurn).setGuessedCorrect(true);														//if wrong
+					guessResultAI = "Suggestion Not Disproven.";
+				}
+				
+				else {
+					players.get(playerTurn).updateSeen(checkAnswer);														//if not wrong
+					guessResultAI = "Suggestion Dispoved.";
+				}
+				for (Player i: players) 
+				{
+					if(i.getName().equals(solutionAI.getPerson().getCardName())) 
+					{
+						i.setCol(Location.getCol());
+						i.setRow(Location.getRow());
+						i.setInRoom(true);
+						i.setRoom(players.get(playerTurn).getRoom());
+					}
+				}
 			}
+			gameControlPanel.setGuess(guessAI);																				//displays AI guess
+			gameControlPanel.setGuessResult(guessResultAI);
 			
 		}
 
@@ -983,7 +1013,7 @@ public class Board extends JPanel implements MouseListener{
 				players.get(playerTurn).setCol(target.getCol());
 				moved=true;
 				
-				if(players.get(playerTurn).isInRoom()) {																			//sees if person already made a move
+				if(players.get(playerTurn).isInRoom()) {														//sees if person already made a move
 					suggestion = new Suggestion(this);															//if not they can make suggestion if in room
 					suggestion.setVisible(true);
 				}

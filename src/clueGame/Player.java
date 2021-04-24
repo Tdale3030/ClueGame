@@ -20,6 +20,7 @@ public abstract class Player {
 	private boolean inRoom = false;
 	private int pos;
 	private Room room;
+	private boolean guessedCorrect = false;
 	
 	
 	public Player(String name, String color, int row, int col) {
@@ -200,7 +201,12 @@ public abstract class Player {
 		
 		seenCards.add(seenCard);
 	}
-	
+	public void setGuessedCorrect(boolean bool) {
+		this.guessedCorrect = true;
+	}
+	public boolean getGuessedCorrect() {
+		return guessedCorrect;
+	}
 	public abstract Solution createSuggestion(ArrayList<Card> deck, Room room);
 	
 	public abstract BoardCell selectTargets(Set<BoardCell> targets);

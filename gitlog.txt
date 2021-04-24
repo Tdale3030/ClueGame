@@ -1,3 +1,9 @@
+commit 4cf88b089236d961bff8b6bcd2ab9c77a043e216
+Author: brodyclark <brodyclark@mymail.mines.edu>
+Date:   Fri Apr 23 19:33:40 2021 -0600
+
+    all done but AI winning
+
 commit 62c954c3e1687345a9c58ab2d5688ccda010e5aa
 Author: brodyclark <brodyclark@mymail.mines.edu>
 Date:   Fri Apr 23 16:06:22 2021 -0600
